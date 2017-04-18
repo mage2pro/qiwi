@@ -1,7 +1,7 @@
 {
 	"name": "mage2pro/qiwi"
 	,"version": "0.0.1"
-	,"description": "The «QIWI Wallet» (QIWI Кошелёк) payment extension for Magento 2."
+	,"description": "The «Visa QIWI Wallet» (QIWI Кошелёк) payment extension for Magento 2."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/qiwi"
 	,"license": "proprietary"
