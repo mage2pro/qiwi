@@ -15,7 +15,6 @@
 			<group
 				id='qiwi'
 				translate='label'
-				type='text'
 				sortOrder='1709'
 				showInDefault='1'
 				showInWebsite='1'
