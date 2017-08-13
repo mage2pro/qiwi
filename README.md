@@ -1,4 +1,5 @@
-The extension integrates your Magento 2 store with the [Visa QIWI Wallet](https://corp.qiwi.com/en/business/onlineshops.action) (QIWI Кошелёк) payment service (Russia).
+The extension integrates your Magento 2 store with the [Visa QIWI Wallet](https://corp.qiwi.com/en/business/onlineshops.action) (QIWI Кошелёк) payment service.  
+Today QIWI payment service is offered in [8 countries](https://corp.qiwi.com/en/company/world.action): Russia, Kazakhstan, Moldova, Romania, Belarus, United States, Brazil, Jordan.
 
 ## How to buy
 The extension is not released yet, so there is no way to buy it just now.  
@@ -12,7 +13,7 @@ Just order my [free installation service](https://mage2.pro/t/3585).
 ```
 composer require mage2pro/qiwi:*
 bin/magento setup:upgrade
-rm -rf pub/static/* && bin/magento setup:static-content:deploy <locale, e.g.: ru_RU>
+rm -rf pub/static/* && bin/magento setup:static-content:deploy ru_RU en_US <additional locales, e.g.: kk_KZ>
 rm -rf var/di var/generation generated/code && bin/magento setup:di:compile
 ```
 If you have some problems while executing these commands, then check the [detailed instruction](https://mage2.pro/t/263).
