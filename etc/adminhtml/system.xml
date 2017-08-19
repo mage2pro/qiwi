@@ -63,7 +63,7 @@
 					translate='label'
 					type='text'
 				>
-					<label>Test Public Key</label>
+					<label>Test Merchant ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
@@ -94,7 +94,7 @@
 					translate='label'
 					type='text'
 				>
-					<label>Live Public Key</label>
+					<label>Live Merchant ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
