@@ -28,7 +28,6 @@
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
-					<label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
 					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/qiwi' target='_blank'>QIWI Wallet</a>» payment extension?
 You need to:
@@ -37,6 +36,8 @@ You need to:
 <li><a href='https://mage2.pro/t/4438' target='_blank' title='[QIWI Wallet] How to setup the webhook notifications?'>setup the webhook notifications</a></li>
 </ul>
 ]]></comment>
+					<dfValidator>Dfe\Qiwi\Validator\Currency</dfValidator>
+					<label>Enable?</label>
 				</field>
 				<field
 					id='title'
@@ -132,9 +133,20 @@ You need to:
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='description'
+					dfValues='RUB,EUR,USD,KZT'
+					id='currency'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='14'
+					translate='label'
+					type='Df\Directory\FormElement\Currency'
+				>
+					<label>Payment Currency</label>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='description'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='15'
 					translate='label'
 					type='textarea'
 				>
@@ -151,7 +163,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='requireBillingAddress'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='16'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -163,7 +175,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='16'
+					sortOrder='17'
 					translate='label'
 					type='text'
 				>
@@ -175,7 +187,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='17'
+					sortOrder='18'
 					translate='label'
 					type='text'
 				>
@@ -187,7 +199,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='18'
+					sortOrder='19'
 					translate='label'
 					type='select'
 				>
@@ -198,7 +210,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='19'
+					sortOrder='20'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>

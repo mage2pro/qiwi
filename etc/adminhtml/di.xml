@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<config
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
+>
+<!-- 2017-09-02 [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445 -->
+	<virtualType name='Dfe\Qiwi\Validator\Currency' type='Df\Framework\Validator\Currency'>
+		<arguments><argument name='iso3' xsi:type='string'>RUB,EUR,USD,KZT</argument></arguments>
+	</virtualType>
+</config>
