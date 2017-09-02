@@ -202,9 +202,29 @@ You need to:
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='description'
+					id='idPrefix'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='13'
+					translate='label'
+				>
+					<label>Payment ID prefix</label>
+					<comment><![CDATA[<p class='df-note'>This option allows you to define a prefix for the payment identificators (values of the <a href='https://mage2.pro/t/4442' target='_blank'><code>bill_id</code></a> API parameter).</p>
+<p class='df-note'>In the most cases you do not need any prefix and can leave this option empty.</p>
+<p class='df-note'>But there are some (rare) cases</a> when your QIWI Wallet payment identifiers can potentially overlap with the previous ones:</p>
+<ul class='df-note'>
+<li>If you have changed (e.g., reset) your Magento order numeration scheme.</li>
+<li>If you use a single QIWI Wallet merchant account for multiple shops.</li>
+</ul>
+<p class='df-note'>If QIWI Wallet encounters a payment identifier which has been already used for another payment, it fails with the message: «<a href='https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_errors_en.html.md#error-codes-errors' target='_blank' title='QIWI Wallet API error codes'><b>Invoice with this <code>bill_id</code> already exists</b></a>» («<a href='https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_errors_ru.html.md#Список-ошибок-errors' target='_blank' title='Перечень диагностических сообщений QIWI Wallet API'><b>Счет с таким <code>bill_id</code> уже существует</b></a>»).</p>
+<p class='df-note'>So to evade such situation you can define a prefix for the payment identifiers.</p>
+<p class='df-note'>Please note that the full payment identifier length (prefix + order number) should be not greater than <a href='https://mage2.pro/t/4442' target='_blank' title='[QIWI Wallet] What is the maximum length of a merchant's payment identifier («bill_id»)?'><b>200 characters</b></a>.</p>
+]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='description'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='14'
 					translate='label'
 					type='textarea'
 				>
@@ -221,7 +241,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='requireBillingAddress'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='15'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -233,7 +253,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='16'
 					translate='label'
 					type='text'
 				>
@@ -245,7 +265,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='16'
+					sortOrder='17'
 					translate='label'
 					type='text'
 				>
@@ -257,7 +277,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='17'
+					sortOrder='18'
 					translate='label'
 					type='select'
 				>
@@ -268,7 +288,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='18'
+					sortOrder='19'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
