@@ -51,143 +51,53 @@ You need to:
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='test'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='3'
-					translate='label'
-					type='Df\Framework\Form\Element\Checkbox'
-				>
-					<label>Test Mode?</label>
-					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[]]></comment>
-					<depends><field id='enable'>1</field></depends>
-				</field>
-				<field
-					id='testMerchantID'
+					id='merchantID'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='4'
 					translate='label'
 					type='text'
 				>
-					<label>[Test] Shop ID</label>
+					<label>Shop ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4439' target='_blank'>How to get it?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
+					<depends><field id='enable'>1</field></depends>
 					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='testApiID'
+					id='apiID'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='5'
 					translate='label'
 					type='text'
 				>
-					<label>[Test] API ID</label>
+					<label>API ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
+					<depends><field id='enable'>1</field></depends>
 					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='testPassword1'
+					id='password1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='6'
 					translate='label'
 					type='obscure'
 				>
-					<label>[Test] API Password</label>
+					<label>API password</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
+					<depends><field id='enable'>1</field></depends>
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='testPassword2'
+					id='password2'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='7'
 					translate='label'
 					type='obscure'
 				>
-					<label>[Test] Webhook password</label>
+					<label>Webhook password</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4434' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
-					<validate>required-entry</validate>
-				</field>
-				<field
-					id='liveMerchantID'
-					translate='label'
-					type='text'
-					sortOrder='8'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>[Live] «Shop ID</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4439' target='_blank'>What is get it?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
-					<validate>required-entry validate-digits</validate>
-				</field>
-				<field
-					id='liveApiID'
-					translate='label'
-					type='text'
-					sortOrder='9'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>[Live] API ID</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>What is get it?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
-					<validate>required-entry validate-digits</validate>
-				</field>
-				<field
-					id='livePassword1'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='10'
-					translate='label'
-					type='obscure'
-				>
-					<label>[Live] API Password</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
-					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
-					<validate>required-entry</validate>
-				</field>
-				<field
-					id='livePassword2'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='11'
-					translate='label'
-					type='obscure'
-				>
-					<label>[Live] Webhook password</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4434' target='_blank'>How to get it?</a>]]></comment>
-					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
+					<depends><field id='enable'>1</field></depends>
 					<validate>required-entry</validate>
 				</field>
 				<field
