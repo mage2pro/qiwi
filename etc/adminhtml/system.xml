@@ -30,7 +30,13 @@
 				>
 					<label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/qiwi' target='_blank'>QIWI Wallet</a>» payment extension?]]></comment>
+					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/qiwi' target='_blank'>QIWI Wallet</a>» payment extension?
+You need to:
+<ul class='df-note'>
+<li><a href='https://mage2.pro/t/4437' target='_blank' title='[QIWI Wallet] How to enable the «HTTP-protocol» («HTTP-протокол»)?'>enable the «HTTP-protocol»</a></li>
+<li><a href='https://mage2.pro/t/4438' target='_blank' title='[QIWI Wallet] How to setup the webhook notifications?'>setup the webhook notifications</a></li>
+</ul>
+]]></comment>
 				</field>
 				<field
 					id='title'
@@ -63,18 +69,33 @@
 					translate='label'
 					type='text'
 				>
+					<label>[Test] Shop ID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4439' target='_blank'>How to get it?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+					<validate>required-entry validate-digits</validate>
+				</field>
+				<field
+					id='testApiID'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='5'
+					translate='label'
+					type='text'
+				>
 					<label>[Test] API ID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
 					</depends>
-					<validate>required-entry</validate>
+					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
 					id='testPassword1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='5'
+					sortOrder='6'
 					translate='label'
 					type='obscure'
 				>
@@ -90,7 +111,7 @@
 				<field
 					id='testPassword2'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='6'
+					sortOrder='7'
 					translate='label'
 					type='obscure'
 				>
@@ -107,7 +128,24 @@
 					id='liveMerchantID'
 					translate='label'
 					type='text'
-					sortOrder='7'
+					sortOrder='8'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>[Live] «Shop ID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4439' target='_blank'>What is get it?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+					<validate>required-entry validate-digits</validate>
+				</field>
+				<field
+					id='liveApiID'
+					translate='label'
+					type='text'
+					sortOrder='9'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -118,12 +156,12 @@
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
 					</depends>
-					<validate>required-entry</validate>
+					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
 					id='livePassword1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='8'
+					sortOrder='10'
 					translate='label'
 					type='obscure'
 				>
@@ -139,7 +177,7 @@
 				<field
 					id='livePassword2'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='9'
+					sortOrder='11'
 					translate='label'
 					type='obscure'
 				>
@@ -155,7 +193,7 @@
 				<field
 					id='webhook'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='10'
+					sortOrder='12'
 					translate='label'
 					type='Df\Framework\Form\Element\Webhook'
 				>
@@ -166,7 +204,7 @@
 				<field
 					id='description'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='11'
+					sortOrder='13'
 					translate='label'
 					type='textarea'
 				>
@@ -183,7 +221,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='requireBillingAddress'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='14'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -195,7 +233,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
+					sortOrder='15'
 					translate='label'
 					type='text'
 				>
@@ -207,7 +245,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='16'
 					translate='label'
 					type='text'
 				>
@@ -219,7 +257,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='17'
 					translate='label'
 					type='select'
 				>
@@ -230,7 +268,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='16'
+					sortOrder='18'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
