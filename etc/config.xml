@@ -6,7 +6,12 @@
     <default>
 		<df_payment>
 			<qiwi>
-				<countries>RU</countries>
+<!-- 2017-09-02
+«Today QIWI payment service is offered in 8 countries:
+Russia, Kazakhstan, Moldova, Romania, Belarus, United States, Brazil, Jordan»
+https://corp.qiwi.com/en/company/world.action
+-->
+				<countries>RU,KZ,MD,RO,BY,US,BR,JO</countries>
 				<country_restriction>whitelist</country_restriction>
 				<currency>RUB</currency>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
