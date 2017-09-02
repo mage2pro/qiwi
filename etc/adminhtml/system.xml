@@ -63,8 +63,8 @@
 					translate='label'
 					type='text'
 				>
-					<label>Test Merchant ID</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
+					<label>[Test] API ID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
@@ -72,14 +72,30 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='testPrivateKey'
+					id='testPassword1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='5'
 					translate='label'
 					type='obscure'
 				>
-					<label>Test Private Key</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
+					<label>[Test] API Password</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+					<validate>required-entry</validate>
+				</field>
+				<field
+					id='testPassword2'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='6'
+					translate='label'
+					type='obscure'
+				>
+					<label>[Test] Webhook password</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4434' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
 						<field id='enable'>1</field>
@@ -89,13 +105,15 @@
 				</field>
 				<field
 					id='liveMerchantID'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='6'
 					translate='label'
 					type='text'
+					sortOrder='7'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
 				>
-					<label>Live Merchant ID</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
+					<label>[Live] API ID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>What is get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
@@ -103,14 +121,14 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='livePrivateKey'
+					id='livePassword1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='7'
+					sortOrder='8'
 					translate='label'
 					type='obscure'
 				>
-					<label>Live Private Key</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/3746' target='_blank'>How to get it?</a>]]></comment>
+					<label>[Live] API Password</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4436' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
 						<field id='enable'>1</field>
@@ -119,9 +137,36 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
+					id='livePassword2'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='9'
+					translate='label'
+					type='obscure'
+				>
+					<label>[Live] Webhook password</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4434' target='_blank'>How to get it?</a>]]></comment>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+					<validate>required-entry</validate>
+				</field>
+				<field
+					id='webhook'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='10'
+					translate='label'
+					type='Df\Framework\Form\Element\Webhook'
+				>
+					<label>Webhook</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4373' target='_blank' title='[QIWI Wallet] How to setup my webhook URL («URL для оповещения)?'>Set it in your QIWI Wallet merchant interface</a>.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
 					id='description'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='8'
+					sortOrder='11'
 					translate='label'
 					type='textarea'
 				>
@@ -138,7 +183,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='requireBillingAddress'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='16'
+					sortOrder='12'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -150,7 +195,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='19'
+					sortOrder='13'
 					translate='label'
 					type='text'
 				>
@@ -162,7 +207,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='20'
+					sortOrder='14'
 					translate='label'
 					type='text'
 				>
@@ -174,7 +219,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='21'
+					sortOrder='15'
 					translate='label'
 					type='select'
 				>
@@ -185,7 +230,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='22'
+					sortOrder='16'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
