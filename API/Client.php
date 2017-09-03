@@ -5,6 +5,9 @@ use Dfe\Qiwi\Settings as S;
 final class Client extends \Df\API\Client {
 	/**
 	 * 2017-09-03
+	 * [QIWI Wallet] An example of a response to
+	 * «PUT https://api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}»
+	 * https://mage2.pro/t/4447
 	 * @override
 	 * @see \Df\API\Client::_construct()
 	 * @used-by \Df\API\Client::__construct()
@@ -12,11 +15,6 @@ final class Client extends \Df\API\Client {
 	protected function _construct() {
 		parent::_construct();
 		$this->resJson();
-		/**
-		 * [QIWI Wallet] An example of a response to
-		 * «PUT https://api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}»
-		 * https://mage2.pro/t/4447
-		 */
 		$this->addFilterRes(function($v) {return $v['response'];});
 	}
 
