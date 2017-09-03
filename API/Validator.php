@@ -11,10 +11,11 @@ final class Validator extends \Df\API\Response\Validator {
 	 * 2017-09-03
 	 * @override
 	 * @see \Df\API\Exception::long()
+	 * @used-by short()
 	 * @used-by \Df\API\Client::p()
 	 * @return string
 	 */
-	function long() {return '';}
+	function long() {return dfa($this->codes(), $this->code());}
 
 	/**
 	 * 2017-09-03
@@ -23,7 +24,7 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @used-by \Df\API\Client::p()
 	 * @return string
 	 */
-	function short() {return '';}
+	function short() {return $this->long();}
 
 	/**
 	 * 2017-09-03
@@ -32,14 +33,22 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @used-by \Df\API\Response\Validator::validate()
 	 * @return bool
 	 */
-	function valid() {return !$this->rCode();}
+	function valid() {return !$this->code();}
 
 	/**
 	 * 2017-09-03 `[QIWI Wallet] API error codes`: https://mage2.pro/t/4448
+	 * @used-by long()
 	 * @used-by valid()
 	 * @return int
 	 */
-	private function rCode() {return dfc($this, function() {return
-		intval(dfa($this->r(), 'result_code'))
-	;});}
+	private function code() {return dfc($this, function() {return intval(dfa($this->r(), 'result_code'));});}
+
+	/**
+	 * 2017-09-03
+	 * @used-by long()
+	 * @return array(int => string)
+	 */
+	private function codes() {return dfc($this, function() {return dfa_key_int(df_module_csv($this, sprintf(
+		'error-codes/%s.csv', df_lang_ru_en()
+	)));});}
 }
