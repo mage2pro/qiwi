@@ -1,53 +1,23 @@
 <?php
 namespace Dfe\Qiwi;
 /**
- * 2017-04-18
+ * 2017-09-03
  * @method Method m()
  * @method Settings s()
  */
-final class Charge extends \Df\PaypalClone\Charge {
+final class Charge extends \Df\Payment\Charge {
 	/**
-	 * 2017-08-19
-	 * @override
-	 * @see \Df\PaypalClone\Charge::k_Amount()
-	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
-	 */
-	protected function k_Amount() {return '';}
-
-	/**
-	 * 2017-08-19
-	 * @override
-	 * @see \Df\PaypalClone\Charge::k_MerchantId()
-	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
-	 */
-	protected function k_MerchantId() {return '';}
-
-	/**
-	 * 2017-04-18
-	 * @override
-	 * @see \Df\PaypalClone\Charge::k_RequestId()
-	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
-	 */
-	protected function k_RequestId() {return '';}
-
-	/**
-	 * 2017-04-18
-	 * @override
-	 * @see \Df\PaypalClone\Charge::k_Signature()
-	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
-	 */
-	protected function k_Signature() {return '';}
-
-	/**
-	 * 2017-04-18
-	 * @override
-	 * @see \Df\PaypalClone\Charge::pCharge()
-	 * @used-by \Df\PaypalClone\Charge::p()
+	 * 2017-09-03
+	 * @used-by p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {$s = $this->s(); return [];}
+	private function pCharge() {$s = $this->s(); return [];}
+
+	/**
+	 * 2017-09-03
+	 * @used-by \Dfe\Qiwi\Init\Action::req()
+	 * @param Method $m
+	 * @return array(string, array(string => mixed))
+	 */
+	static function p(Method $m) {return (new self($m))->pCharge();}
 }

@@ -5,12 +5,14 @@ namespace Dfe\Qiwi;
 final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-02 «API ID».
+	 * @used-by \Dfe\Qiwi\API\Client::headers()
 	 * @return string
 	 */
 	function apiID() {return $this->v();}
 
 	/**
 	 * 2017-09-02 «API password».
+	 * @used-by \Dfe\Qiwi\API\Client::headers()
 	 * @return string
 	 */
 	function password1() {return $this->p();}

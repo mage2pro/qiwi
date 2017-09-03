@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Qiwi;
 // 2017-04-18
-final class Method extends \Df\PaypalClone\Method {
+final class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-04-18
 	 * @override
