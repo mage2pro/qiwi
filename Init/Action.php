@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\Qiwi\Init;
+use Dfe\Qiwi\API\Bill;
 use Dfe\Qiwi\Charge;
 use Dfe\Qiwi\Method as M;
 use Dfe\Qiwi\W\Event as Ev;
@@ -39,16 +40,21 @@ final class Action extends \Df\Payment\Init\Action {
 	 */
 	private function req() {return dfc($this, function() {
 		/** @var M $m */ /** @var array(string => mixed) $result */
-		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p($m));
+		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p());
 		$m->iiaSetTRR($result);
 		return $result;
 	});}
-
+	
 	/**
-	 * 2017-09-03
+	 * 2017-09-04
 	 * @used-by redirectUrl()
 	 * @used-by transId()
 	 * @return array(string => mixed)
 	 */
-	private function res() {return [];}
+	private function res() {return dfc($this, function() {
+		$m = $this->m(); /** @var M $m */
+		$m->iiaSetTRR(null, $r = Bill::s()->put($this->req())); /** @var array(string => mixed) $r */
+		dfp_report($m, $r, 'response');
+		return $r;
+	});}
 }
