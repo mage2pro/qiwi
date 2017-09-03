@@ -75,7 +75,7 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::_p()
 	 * @return string
 	 */
-	protected function uriBase() {return "https://api.qiwi.com/api/v2/prv/{$this->s()->merchantID()}/bills";}
+	protected function uriBase() {return "https://api.qiwi.com/api/v2/prv/{$this->s()->merchantID()}";}
 
 	/**
 	 * 2017-09-03
