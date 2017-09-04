@@ -30,12 +30,59 @@ final class Charge extends \Df\Payment\Charge {
 	 */
 	function pBill() {$s = $this->s(); return [
 		// 2017-09-04
+		// «The invoice amount. The rounding up method depends on the invoice currency.»
+		// «Сумма, на которую выставляется счет. Способ округления зависит от валюты.»
+		// Required, number(6.3).
+		'amount' => ''
+		// 2017-09-04
+		// «Invoice currency identifier (Alpha-3 ISO 4217 code).
+		// Depends on currencies allowed for the merchant.
+		// The following values are supported: RUB, EUR, USD, KZT.»
+		// «Идентификатор валюты (Alpha-3 ISO 4217 код).
+		// Может использоваться любая валюта, предусмотренная договором с КИВИ.»
+		// Required, string(3).
+		// As you can see, the English and Russian versions of the same documentation
+		// contain a contradictory information about currencies.
+		// [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445
+		,'ccy' => ''
+		// 2017-09-04
+		// «Comment to the invoice» / «Комментарий к счету»
+		// Required, string(255).
+		,'comment' => ''
+		// 2017-09-04
+		// «Date and time up to which the invoice is available for payment.
+		// If the invoice is not paid by this date it will become void and will be assigned a final status.
+		// Important! Invoice will be automatically expired when 45 days is passed after the invoicing date.»
+		// «Дата, до которой счет будет доступен для оплаты.
+		// Если счет не будет оплачен до этой даты, ему присваивается финальный статус
+		// и последующая оплата станет невозможна.
+		// Внимание! По истечении 28 суток от даты выставления
+		// счет автоматически будет переведен в финальный статус.»
+		// Required, dateTime.
+		// As you can see, the English and Russian versions of the same documentation
+		// contain a contradictory information.
+		// [QIWI Wallet] What is the maximum unpaid invoice lifetime? https://mage2.pro/t/4453
+		,'lifetime' => ''
+		// 2017-09-04
+		// «If the value is "mobile" the user’s MNO balance will be used as a funding source.
+		// If the value is "qw", any other funding source is used available in Visa QIWI Wallet interface.
+		// If parameter isn’t present, value "qw" is assumed.»
+		// «"mobile" - оплата счета будет производиться с баланса мобильного телефона пользователя,
+		// "qw" – любым способом через интерфейс Visa QIWI Wallet.
+		// По умолчанию "qw".»
+		// Optional, string.
+		,'pay_source' => 'qw'
+		// 2017-09-04
+		// «Merchant’s name» / «Название провайдера»
+		// Optional, string(100).
+		,'prv_name' => ''
+		// 2017-09-04
 		// «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
 		// It is the user’s phone number with "tel:" prefix.»
 		// «Идентификатор номера QIWI Wallet, на который выставляется счет (в международном формате),
 		// с префиксом "tel:".»
 		// Required, string(20).
-		'user' => ''
+		,'user' => ''
 	];}
 
 	/**
