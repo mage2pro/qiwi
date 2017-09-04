@@ -151,9 +151,10 @@ You need to:
 					type='textarea'
 				>
 					<label>Description</label>
-					<comment><![CDATA[It will be displayed to you in the QIWI Wallet merchant interface alongside the payment.
-<br/>Up to 100 characters.
-<br/>You can use <a href='https://mage2.pro/t/1834' target='_blank'>variables</a> in the description.]]></comment>
+					<comment><![CDATA[<p class='df-note'>It will be displayed to you in the QIWI Wallet merchant interface alongside the payment.</p>
+<p class='df-note'>You can use <a href='https://mage2.pro/t/1834' target='_blank'>some variables</a> in the description.</p>
+<p class='df-note'>The full description length (after the variables substitution) should be not greater than <b><a href='https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#parameters' target='_blank' title='The GitHub-based documentation: «Pull REST API» → «Issuing Invoice for the Order» → «Parameters». See the «comment» parameter.'>255 characters</a></b> (the description will be automatically chopped to 255 characters if it is longer).</p>
+]]></comment>
 <!-- 2016-07-01
 We do not use the `validate-length` validator here
 because the value can contain variables, so do not know the real length here. -->
