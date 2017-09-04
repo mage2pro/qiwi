@@ -39,6 +39,7 @@ final class Charge extends \Df\Payment\Charge {
 		// «A positive number rounded up to 2 or 3 decimal places after the comma.»
 		// «Положительное число, округленное до 2 или 3 знаков после десятичной точки.»
 		// Required, number(6.3). Regex: ^\d+(.\d{0,3})?$
+		// [QIWI Wallet] What are the rounding rules for each supported currency? https://mage2.pro/t/4454
 		'amount' => ''
 		// 2017-09-04
 		// 1) The GitHub-based documentation:
