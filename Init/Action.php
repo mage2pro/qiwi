@@ -16,31 +16,42 @@ final class Action extends \Df\Payment\Init\Action {
 	 * «4.3. Переадресация для оплаты счета», страница 9.
 	 * «Провайдер может предложить пользователю немедленно оплатить счет
 	 * с помощью переадресации на страницу оплаты».
+	 * 2017-09-04
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_en.html.md#checkout-checkout_en
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_ru.html.md#Форма-оплаты-checkout_ru
+	 * https://developer.qiwi.com/ru/pull-payments/index.html#checkout_ru
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @return string
 	 */
-	protected function redirectUrl() {return 'https://bill.qiwi.com/order/external/main.action';}
+	protected function redirectUrl() {return
+		'https://bill.qiwi.com/order/external/main.action?' . http_build_query($this->charge()->pRedirect())
+	;}
 
 	/**
-	 * 2017-09-03
+	 * 2017-09-04
+	 * QIWI Wallet does not provide its own payment ID in a payment response:
+	 * `An example of a response to «PUT https://api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}»`
+	 * https://mage2.pro/t/4447
+	 * So we use our internal payment ID as a base for the corresponding Magento transaction ID.
 	 * @override
 	 * @see \Df\Payment\Init\Action::transId()
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @used-by action()
 	 * @return string|null
 	 */
-	protected function transId() {return $this->e2i('', Ev::T_INIT);}
+	protected function transId() {return $this->e2i($this->charge()->id(), Ev::T_INIT);}
 
 	/**
 	 * 2017-09-03
+	 * @used-by id()
 	 * @used-by res()
 	 * @return array(string => mixed)
 	 */
 	private function req() {return dfc($this, function() {
 		/** @var M $m */ /** @var array(string => mixed) $result */
-		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p());
+		df_sentry_extra($m = $this->m(), 'Request Params', $result = $this->charge()->pBill());
 		$m->iiaSetTRR($result);
 		return $result;
 	});}
@@ -57,4 +68,12 @@ final class Action extends \Df\Payment\Init\Action {
 		dfp_report($m, $r, 'response');
 		return $r;
 	});}
+
+	/**
+	 * 2017-09-04
+	 * @used-by req()
+	 * @used-by transId()
+	 * @return Charge
+	 */
+	private function charge() {return dfc($this, function() {return new Charge($this->m());});}
 }
