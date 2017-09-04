@@ -19,37 +19,47 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-09-04
+	 * 1) The GitHub-based documentation:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#request--put
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_ru.html.md#Запрос--put
+	 * 2) The PDF documentation:
 	 * «4.2. Creating an Invoice», page 7.
 	 * «4.2. Выставление счета пользователю», страница 7.
 	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
-	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#request--put
-	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_ru.html.md#Запрос--put
-	 * https://developer.qiwi.com/ru/pull-payments/index.html#invoice_rest
+	 * 3) An online documentation: https://developer.qiwi.com/ru/pull-payments/index.html#invoice_rest
 	 * @used-by \Dfe\Qiwi\Init\Action::req()
 	 * @return array(string, array(string => mixed))
 	 */
 	function pBill() {$s = $this->s(); return [
 		// 2017-09-04
+		// 1) The GitHub-based documentation:
 		// «The invoice amount. The rounding up method depends on the invoice currency.»
 		// «Сумма, на которую выставляется счет. Способ округления зависит от валюты.»
-		// Required, number(6.3).
+		// 2) The PDF documentation:
+		// «A positive number rounded up to 2 or 3 decimal places after the comma.»
+		// «Положительное число, округленное до 2 или 3 знаков после десятичной точки.»
+		// Required, number(6.3). Regex: ^\d+(.\d{0,3})?$
 		'amount' => ''
 		// 2017-09-04
+		// 1) The GitHub-based documentation:
 		// «Invoice currency identifier (Alpha-3 ISO 4217 code).
 		// Depends on currencies allowed for the merchant.
 		// The following values are supported: RUB, EUR, USD, KZT.»
 		// «Идентификатор валюты (Alpha-3 ISO 4217 код).
 		// Может использоваться любая валюта, предусмотренная договором с КИВИ.»
-		// Required, string(3).
 		// As you can see, the English and Russian versions of the same documentation
 		// contain a contradictory information about currencies.
 		// [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445
-		,'ccy' => ''
+		// 2) The PDF documentation: «Three-letter abbreviation» / «Трёхбуквенная аббревиатура».
+		// Required, string(3). Regex: ^[a-zA-Z]{3}$
+		,'ccy' => $this->currencyC()
 		// 2017-09-04
-		// «Comment to the invoice» / «Комментарий к счету»
-		// Required, string(255).
+		// 1) The GitHub-based documentation: «Comment to the invoice» / «Комментарий к счету».
+		// 2) The PDF documentation: «Any text up to 255 symbols» / «Любой текст».
+		// Required, string(255). Regex: ^\.{0,255}$
 		,'comment' => ''
 		// 2017-09-04
+		// 1) The GitHub-based documentation:
 		// «Date and time up to which the invoice is available for payment.
 		// If the invoice is not paid by this date it will become void and will be assigned a final status.
 		// Important! Invoice will be automatically expired when 45 days is passed after the invoicing date.»
@@ -58,30 +68,43 @@ final class Charge extends \Df\Payment\Charge {
 		// и последующая оплата станет невозможна.
 		// Внимание! По истечении 28 суток от даты выставления
 		// счет автоматически будет переведен в финальный статус.»
-		// Required, dateTime.
 		// As you can see, the English and Russian versions of the same documentation
 		// contain a contradictory information.
 		// [QIWI Wallet] What is the maximum unpaid invoice lifetime? https://mage2.pro/t/4453
+		// 2) The PDF documentation:
+		// «Date/time, up to the seconds, in ISO 8601 format (YYYY-MM-DD'T' hh:mm:ss).
+		// Important! Time is specified in Moscow time zone.»
+		// «Дата/время с точностью до секунд в формате ISO 8601 (ГГГГ-ММ-ДД'T'чч:мм:сс).
+		// Внимание! Указывается московское время.»
+		// Required, dateTime. Regex: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}: \d{2}$
 		,'lifetime' => ''
 		// 2017-09-04
+		// 1) The GitHub-based documentation:
 		// «If the value is "mobile" the user’s MNO balance will be used as a funding source.
 		// If the value is "qw", any other funding source is used available in Visa QIWI Wallet interface.
 		// If parameter isn’t present, value "qw" is assumed.»
 		// «"mobile" - оплата счета будет производиться с баланса мобильного телефона пользователя,
 		// "qw" – любым способом через интерфейс Visa QIWI Wallet.
 		// По умолчанию "qw".»
-		// Optional, string.
+		// 2) The PDF documentation: «"mobile", "qw"».
+		// Optional, string. Regex: ^((mobile)|(qw)){1}$
 		,'pay_source' => 'qw'
 		// 2017-09-04
-		// «Merchant’s name» / «Название провайдера»
-		// Optional, string(100).
+		// 1) The GitHub-based documentation: «Merchant’s name» / «Название провайдера».
+		// 2) The PDF documentation: «Any text, not more than 100 symbols» / «Произвольная строка до 100 символов»
+		// Optional, string(100). Regex: ^\.{1,100}$
 		,'prv_name' => ''
 		// 2017-09-04
+		// 1) The GitHub-based documentation:
 		// «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
 		// It is the user’s phone number with "tel:" prefix.»
 		// «Идентификатор номера QIWI Wallet, на который выставляется счет (в международном формате),
 		// с префиксом "tel:".»
-		// Required, string(20).
+		// 2) The PDF documentation:
+		// «String of the form "tel:phone_number",
+		// where "phone_number" – wireless phone number in international format.»
+		// «Строка вида "tel:phone_number", где phone_number – номер мобильного телефона в международном формате.»
+		// Required, string(20). Regex: ^tel:\+\d{1,15}$
 		,'user' => ''
 	];}
 
