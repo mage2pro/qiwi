@@ -19,15 +19,37 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-09-04
+	 * «4.2. Creating an Invoice», page 7.
+	 * «4.2. Выставление счета пользователю», страница 7.
+	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#request--put
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_ru.html.md#Запрос--put
+	 * https://developer.qiwi.com/ru/pull-payments/index.html#invoice_rest
 	 * @used-by \Dfe\Qiwi\Init\Action::req()
 	 * @return array(string, array(string => mixed))
 	 */
 	function pBill() {$s = $this->s(); return [
-
+		// 2017-09-04
+		// «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
+		// It is the user’s phone number with "tel:" prefix.»
+		// «Идентификатор номера QIWI Wallet, на который выставляется счет (в международном формате),
+		// с префиксом "tel:".»
+		// Required, string(20).
+		'user' => ''
 	];}
 
 	/**
 	 * 2017-09-04
+	 * «4.3. Redirection for Invoice Payment», page 9.
+	 * «4.3. Переадресация для оплаты счета», страница 9.
+	 * «Merchant may offer a Visa QIWI Wallet user to pay the invoice immediately
+	 * by redirecting to the Visa QIWI Wallet checkout page.»
+	 * «Провайдер может предложить пользователю немедленно оплатить счет
+	 * с помощью переадресации на страницу оплаты».
+	 * «[QIWI Wallet] The REST API specification (v.2.12)»: https://mage2.pro/t/3745
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_en.html.md#checkout-checkout_en
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_ru.html.md#Форма-оплаты-checkout_ru
+	 * https://developer.qiwi.com/ru/pull-payments/index.html#checkout_ru
 	 * @used-by \Dfe\Qiwi\Init\Action::req()
 	 * @return array(string, array(string => mixed))
 	 */
