@@ -159,9 +159,33 @@ because the value can contain variables, so do not know the real length here. --
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='requireBillingAddress'
+					id='waitPeriod'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='16'
+					translate='label'
+					type='text'
+				>
+					<label>Wait period for a payment</label>
+					<comment><![CDATA[In days. The maximum wait period is <a href='https://mage2.pro/t/topic/4453/2' target='_blank' title='[QIWI Wallet] What is the maximum unpaid invoice lifetime?'><b>45 calendar days</b></a>.]]></comment>
+					<validate>validate-digits validate-digits-range digits-range-1-60</validate>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='waitPeriodType'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='17'
+					translate='label'
+					type='select'
+				>
+					<label>Wait Period Type</label>
+					<source_model>Df\Config\Source\WaitPeriodType</source_model>
+					<comment><![CDATA[You can set the working days with the<br/>«<b>General</b>» → «<b>General</b>» → «<b>Locale Options</b>» → «<b>Weekend Days</b>» option.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='requireBillingAddress'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='18'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -173,7 +197,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='17'
+					sortOrder='19'
 					translate='label'
 					type='text'
 				>
@@ -185,7 +209,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='18'
+					sortOrder='20'
 					translate='label'
 					type='text'
 				>
@@ -197,7 +221,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='19'
+					sortOrder='21'
 					translate='label'
 					type='select'
 				>
@@ -208,7 +232,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='20'
+					sortOrder='22'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
