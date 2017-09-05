@@ -61,7 +61,7 @@ final class Charge extends \Df\Payment\Charge {
 		// 1) The GitHub-based documentation: «Comment to the invoice» / «Комментарий к счету».
 		// 2) The PDF documentation: «Any text up to 255 symbols» / «Любой текст».
 		// Required, string(255). Regex: ^\.{0,255}$
-		,'comment' => ''
+		,'comment' => $this->description()
 		// 2017-09-04
 		// 1) The GitHub-based documentation:
 		// «Date and time up to which the invoice is available for payment.
@@ -97,7 +97,7 @@ final class Charge extends \Df\Payment\Charge {
 		// 1) The GitHub-based documentation: «Merchant’s name» / «Название провайдера».
 		// 2) The PDF documentation: «Any text, not more than 100 symbols» / «Произвольная строка до 100 символов»
 		// Optional, string(100). Regex: ^\.{1,100}$
-		,'prv_name' => ''
+		,'prv_name' => df_chop($this->store()->getFrontendName(), 100)
 		// 2017-09-04
 		// 1) The GitHub-based documentation:
 		// «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
@@ -109,7 +109,7 @@ final class Charge extends \Df\Payment\Charge {
 		// where "phone_number" – wireless phone number in international format.»
 		// «Строка вида "tel:phone_number", где phone_number – номер мобильного телефона в международном формате.»
 		// Required, string(20). Regex: ^tel:\+\d{1,15}$
-		,'user' => ''
+		,'user' => "tel:{$this->m()->phone()}"
 	];}
 
 	/**

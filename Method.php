@@ -23,6 +23,13 @@ final class Method extends \Df\Payment\Method {
 	 * @return string
 	 */
 	function amountFormat($a) {return df_f2($a);}
+
+	/**
+	 * 2017-09-05
+	 * @used-by \Dfe\Qiwi\Charge::pBill()
+	 * @return string|null
+	 */
+	function phone() {return $this->iia(self::$II_PHONE);}
 	
 	/**
 	 * 2017-04-18
@@ -32,4 +39,20 @@ final class Method extends \Df\Payment\Method {
 	 * @return null
 	 */
 	protected function amountLimits() {return null;}
+
+	/**
+	 * 2017-09-05
+	 * @override
+	 * @see \Df\Payment\Method::iiaKeys()
+	 * @used-by \Df\Payment\Method::assignData()
+	 * @return string[]
+	 */
+	protected function iiaKeys() {return [self::$II_PHONE];}
+
+	/**
+	 * 2017-09-05
+	 * @used-by iiaKeys()
+	 * @used-by phone()
+	 */
+	private static $II_PHONE = 'phone';
 }
