@@ -1,6 +1,7 @@
 <?php
 namespace Dfe\Qiwi;
 use Df\Payment\Source\Identification;
+use Zend_Date as ZD;
 /**
  * 2017-09-03
  * @method Method m()
@@ -62,26 +63,7 @@ final class Charge extends \Df\Payment\Charge {
 		// 2) The PDF documentation: «Any text up to 255 symbols» / «Любой текст».
 		// Required, string(255). Regex: ^\.{0,255}$
 		,'comment' => $this->description()
-		// 2017-09-04
-		// 1) The GitHub-based documentation:
-		// «Date and time up to which the invoice is available for payment.
-		// If the invoice is not paid by this date it will become void and will be assigned a final status.
-		// Important! Invoice will be automatically expired when 45 days is passed after the invoicing date.»
-		// «Дата, до которой счет будет доступен для оплаты.
-		// Если счет не будет оплачен до этой даты, ему присваивается финальный статус
-		// и последующая оплата станет невозможна.
-		// Внимание! По истечении 28 суток от даты выставления
-		// счет автоматически будет переведен в финальный статус.»
-		// As you can see, the English and Russian versions of the same documentation
-		// contain a contradictory information.
-		// [QIWI Wallet] What is the maximum unpaid invoice lifetime? https://mage2.pro/t/4453
-		// 2) The PDF documentation:
-		// «Date/time, up to the seconds, in ISO 8601 format (YYYY-MM-DD'T' hh:mm:ss).
-		// Important! Time is specified in Moscow time zone.»
-		// «Дата/время с точностью до секунд в формате ISO 8601 (ГГГГ-ММ-ДД'T'чч:мм:сс).
-		// Внимание! Указывается московское время.»
-		// Required, dateTime. Regex: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}: \d{2}$
-		,'lifetime' => ''
+		,'lifetime' => $this->lifetime()
 		// 2017-09-04
 		// 1) The GitHub-based documentation:
 		// «If the value is "mobile" the user’s MNO balance will be used as a funding source.
@@ -111,6 +93,51 @@ final class Charge extends \Df\Payment\Charge {
 		// Required, string(20). Regex: ^tel:\+\d{1,15}$
 		,'user' => "tel:{$this->m()->phone()}"
 	];}
+
+	/**
+	 * 2017-09-05
+	 * 1) The GitHub-based documentation:
+	 * «Date and time up to which the invoice is available for payment.
+	 * If the invoice is not paid by this date it will become void and will be assigned a final status.
+	 * Important! Invoice will be automatically expired when 45 days is passed after the invoicing date.»
+	 * «Дата, до которой счет будет доступен для оплаты.
+	 * Если счет не будет оплачен до этой даты, ему присваивается финальный статус
+	 * и последующая оплата станет невозможна.
+	 * Внимание! По истечении 28 суток от даты выставления
+	 * счет автоматически будет переведен в финальный статус.»
+	 * As you can see, the English and Russian versions of the same documentation
+	 * contain a contradictory information.
+	 * [QIWI Wallet] What is the maximum unpaid invoice lifetime? https://mage2.pro/t/4453
+	 * 2) The PDF documentation:
+	 * «Date/time, up to the seconds, in ISO 8601 format (YYYY-MM-DD'T' hh:mm:ss).
+	 * Important! Time is specified in Moscow time zone.»
+	 * «Дата/время с точностью до секунд в формате ISO 8601 (ГГГГ-ММ-ДД'T'чч:мм:сс).
+	 * Внимание! Указывается московское время.»
+	 * Required, dateTime. Regex: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}: \d{2}$
+	 * @return string
+	 */
+	private function lifetime() {
+		$d = ZD::now(); /** @var ZD $d */
+		/**    
+		 * 2017-09-05   
+		 * Эта операция конвертирует время из пояса @see date_default_timezone_get() в пояс аргумента.
+		 * Пример:
+		 * $dateS = «2016/07/28 11:35:03»,
+		 * date_default_timezone_get() = «Asia/Taipei»
+		 * пояс аргумента = «Europe/Moscow»
+		 * $result->toString() = 'Jul 28, 2016 6:35:03 AM'
+		 */		
+		$d->setTimezone('Europe/Moscow');
+		$d->addDay($this->s()->waitPeriod());
+		/**
+		 * 2017-09-05
+		 * I do not use @see ZD::ISO_8601 here,
+		 * because in thic case the result will be formatted with the timezone at the end,
+		 * e.g.: «2017-10-20T19:18:31+03:00»,
+		 * but QIWI Wallet requires a value without a timezone suffix.
+		 */
+		return $d->toString('y-MM-ddTHH:mm:ss');
+	}
 
 	/**
 	 * 2017-09-04
