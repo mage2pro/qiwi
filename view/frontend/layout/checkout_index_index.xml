@@ -3,6 +3,9 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
 >
+	<head>
+		<css src='Dfe_Qiwi::checkout.css'/>
+	</head>
 	<body>
 		<referenceBlock name='checkout.root'>
 			<arguments>
@@ -43,5 +46,6 @@
 				</argument>
 			</arguments>
 		</referenceBlock>
+		<referenceContainer name='root'><block class='Df\Phone\Js'/></referenceContainer>
 	</body>
 </page>
