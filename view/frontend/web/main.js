@@ -29,10 +29,10 @@ return parent.extend({
 		var _this = this;
 		baChange(function(a) {
 			var newValue = null;
-			if (a.telephone && a.telephone.length) {
+			if (a.telephone) {
 				newValue = a.telephone;
 			}
-			else if (c && c.telephone && c.telephone.length) {
+			else if (c && c.telephone) {
 				newValue = c.telephone;
 			}
 			if (newValue) {
