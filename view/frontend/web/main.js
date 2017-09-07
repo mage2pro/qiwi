@@ -36,7 +36,6 @@ return parent.extend({
 				newValue = c.telephone;
 			}
 			if (newValue) {
-				newValue = df.s.normalizePhone(newValue);
 				_this.phone(newValue);
 				var $form = _this.dfForm();
 				if ($form) {
