@@ -23,11 +23,7 @@ return parent.extend({
 	 * @see Df_Payment/custom::initialize()
 	 * @returns {exports}
 	*/
-	initialize: function() {
-		this._super();
-		this.phone('+55 21 3139-8000');
-		return this;
-	},
+	initialize: function() {this._super(); this.phone('+552131398000'); return this;},
 	/**
 	 * 2017-09-06 The method should return `this` because it is used in a chain:
 	 *	this._super()

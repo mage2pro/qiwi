@@ -7,7 +7,7 @@
 			class='input-text required-entry'
 			data-bind="
 				attr: {title: $t('Phone Number')}
-				,'df-phone': {options: {}, storage: phone}
+				,'df-phone': {options: {}, storage: phone, value: phone()}
 				,id: fid('phone')
 				,value: phone
 				,valueUpdate: 'keyup'
