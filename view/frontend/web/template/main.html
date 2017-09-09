@@ -11,18 +11,39 @@ So, in our case the validated elements should have an ID or a name.
 		<span><!-- ko df_i18n: "Phone Number"--><!-- /ko --></span>
 	</label>
 	<div class='control'>
-		<input
-			class='input-text required-entry'
-			data-bind="
-				attr: {title: $t('Phone Number')}
-				,'df-phone': {options: {}, storage: phone, value: phone()}
-				,id: fid('phone')
-				,value: phone
-				,valueUpdate: 'keyup'
-			"
-			type='tel'
-		>
-		<span class='df-valid df-hidden'>✓ Valid</span>
-		<span class='df-invalid df-hidden'>Invalid</span>
+<!-- 2017-09-09
+We need this whapper, because otherwise the validation message will break the country flag position
+(the country flag will be shifted down).
+It is because the `jackocnr/intl-tel-input` JS library creates some wrappers around the phone <input>,
+and the `mage/validation` JS library places the validation message just after the <input>:
+https://github.com/magento/magento2/blob/2.2.0-rc2.3/lib/web/mage/validation.js#L1744-L1776
+So the `mage/validation`'s message increases the `jackocnr/intl-tel-input`'s wrappers height,
+and it breaks the country flag position.
+But `mage/validation` allows to specify a custom validation message position in some ways.
+One of the way is to use an `.addon` wrapper.
+`mage/validation` processes it in the following way:
+	fieldWrapper = element.closest('.addon');
+	if (fieldWrapper.length) {
+		errorPlacement = fieldWrapper.after(error);
+	}
+https://github.com/magento/magento2/blob/2.2.0-rc2.3/lib/web/mage/validation.js#L1756-L1761
+-->
+		<div class='addon df-phone-addon'>
+			<input
+				class='input-text required-entry'
+				data-bind="
+					attr: {
+						'data-container': getCode() + '-phone'
+						,'data-validate': JSON.stringify({'df-validate-phone': '#' + fid('phone')})
+						,id: fid('phone')
+						,title: $t('Phone Number')
+					}
+					,'df-phone': {options: {}, storage: phone, value: phone()}
+					,value: phone
+					,valueUpdate: 'keyup'
+				"
+				type='tel'
+			>
+		</div>
 	</div>
 </div>
