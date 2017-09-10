@@ -8,6 +8,24 @@ use Dfe\Qiwi\W\Event as Ev;
 /** @method \Dfe\Qiwi\Method m() */
 final class Action extends \Df\Payment\Init\Action {
 	/**
+	 * 2017-09-10
+	 * @override
+	 * @see \Df\Payment\Init\Action::forceGet()
+	 * @used-by \Df\Payment\Init\Action::action()
+	 * @return string
+	 */
+	protected function forceGet() {return true;}
+
+	/**
+	 * 2017-09-10
+	 * @override
+	 * @see \Df\Payment\Init\Action::redirectParams()
+	 * @used-by \Df\Payment\Init\Action::action()
+	 * @return array(string => mixed)
+	 */
+	protected function redirectParams() {return $this->charge()->pRedirect();}
+
+	/**
 	 * 2017-09-02
 	 * «[QIWI Wallet] The REST API specification (v.2.12)»: https://mage2.pro/t/3745
 	 * «4.3. Redirection for Invoice Payment», page 9.
@@ -25,9 +43,22 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @return string
 	 */
-	protected function redirectUrl() {return
-		'https://bill.qiwi.com/order/external/main.action?' . http_build_query($this->charge()->pRedirect())
-	;}
+	protected function redirectUrl() {return 'https://bill.qiwi.com/order/external/main.action';}
+
+	/**
+	 * 2017-09-10
+	 * @override
+	 * @see \Df\Payment\Init\Action::preorder()
+	 * @used-by \Df\Payment\Init\Action::action()
+	 */
+	protected function preorder() {
+		$c = $this->charge(); /** @var Charge $c */
+		/** @var M $m */ /** @var array(string => mixed) $req */
+		df_sentry_extra($m = $this->m(), 'Request Params', $req = $c->pBill());
+		$res = Bill::s()->put([$c->id(), $req]); /** @var array(string => mixed) $res */
+		$m->iiaSetTRR($req, $res);
+		dfp_report($m, ['Request' => $req, 'Response' => $res], 'preorder');
+	}
 
 	/**
 	 * 2017-09-04
@@ -44,34 +75,9 @@ final class Action extends \Df\Payment\Init\Action {
 	protected function transId() {return $this->e2i($this->charge()->id(), Ev::T_INIT);}
 
 	/**
-	 * 2017-09-03
-	 * @used-by id()
-	 * @used-by res()
-	 * @return array(string => mixed)
-	 */
-	private function req() {return dfc($this, function() {
-		/** @var M $m */ /** @var array(string => mixed) $result */
-		df_sentry_extra($m = $this->m(), 'Request Params', $result = $this->charge()->pBill());
-		$m->iiaSetTRR($result);
-		return $result;
-	});}
-	
-	/**
 	 * 2017-09-04
-	 * @used-by redirectUrl()
-	 * @used-by transId()
-	 * @return array(string => mixed)
-	 */
-	private function res() {return dfc($this, function() {
-		$m = $this->m(); /** @var M $m */
-		$m->iiaSetTRR(null, $r = Bill::s()->put($this->req())); /** @var array(string => mixed) $r */
-		dfp_report($m, $r, 'response');
-		return $r;
-	});}
-
-	/**
-	 * 2017-09-04
-	 * @used-by req()
+	 * @used-by preorder()
+	 * @used-by redirectParams()
 	 * @used-by transId()
 	 * @return Charge
 	 */

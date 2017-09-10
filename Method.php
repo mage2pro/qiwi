@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Qiwi;
-// 2017-04-18
+// 2017-09-04
 final class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-09-04

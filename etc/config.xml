@@ -21,6 +21,15 @@ https://corp.qiwi.com/en/company/world.action
 					<url>https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#parameters</url>
 					<value>255</value>
 				</descriptionMaxLength>
+				<identification_rules>
+<!-- 2017-09-10
+`[QIWI Wallet] A bug: a «PUT api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}» request fails when the {bill_id} parameter contains an URL-encoded slash (%2F) despite the API specification does not forbid any characters in {bill_id}`: https://mage2.pro/t/4479
+-->
+					<regex>
+						<message><![CDATA[the slash («<b>/</b>») character <a href='https://mage2.pro/t/topic/4479' target='_blank' title='[QIWI Wallet] A bug: a «PUT api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}» request fails when the {bill_id} parameter contains an URL-encoded slash (%2F) despite the API specification does not forbid any characters in {bill_id}'>is not allowed</a>]]></message>
+						<pattern><![CDATA[#^[^/]+$#i]]></pattern>
+					</regex>
+				</identification_rules>
 				<requireBillingAddress>1</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
 				<title>QIWI Wallet</title>

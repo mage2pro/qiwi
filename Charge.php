@@ -13,6 +13,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @override
 	 * @see \Df\Payment\Operation::id()
 	 * @used-by pRedirect()
+	 * @used-by \Dfe\Qiwi\Init\Action::preorder()
 	 * @used-by \Dfe\Qiwi\Init\Action::transId()
 	 * @return string
 	 */
@@ -28,7 +29,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * «4.2. Выставление счета пользователю», страница 7.
 	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 	 * 3) An online documentation: https://developer.qiwi.com/ru/pull-payments/index.html#invoice_rest
-	 * @used-by \Dfe\Qiwi\Init\Action::req()
+	 * @used-by \Dfe\Qiwi\Init\Action::preorder()
 	 * @return array(string, array(string => mixed))
 	 */
 	function pBill() {return [
@@ -106,7 +107,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_en.html.md#checkout-checkout_en
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_checkout_ru.html.md#Форма-оплаты-checkout_ru
 	 * https://developer.qiwi.com/ru/pull-payments/index.html#checkout_ru
-	 * @used-by \Dfe\Qiwi\Init\Action::req()
+	 * @used-by \Dfe\Qiwi\Init\Action::redirectParams()
 	 * @return array(string, array(string => mixed))
 	 */
 	function pRedirect() {$s = $this->s(); return [

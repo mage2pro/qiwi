@@ -48,7 +48,7 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @used-by long()
 	 * @return array(int => string)
 	 */
-	private function codes() {return dfc($this, function() {return dfa_key_int(df_module_csv($this, sprintf(
-		'error-codes/%s.csv', df_lang_ru_en()
-	)));});}
+	private function codes() {return dfc($this, function() {return dfa_key_int(df_module_csv($this,
+		'error-codes/' . df_lang_ru_en()
+	));});}
 }

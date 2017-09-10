@@ -113,9 +113,27 @@ You need to:
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='idPrefix'
+					id='identification'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='13'
+					translate='label'
+					type='select'
+				>
+					<label>Payment Identification Type</label>
+					<source_model>Df\Payment\Source\Identification</source_model>
+					<comment><![CDATA[
+<p class='df-note'>«<b>Visible ID</b>» is the recommended value for the most shops,
+because it allows you to locate a payment in the QIWI Wallet merchant backend
+knowing only the order's visible identifier.</p>
+<p class='df-note'>On the other hand, QIWI Wallet can fail on some unpredicted characters in a payment identifier (e.g. it <a href='https://mage2.pro/t/4479' target='_blank' title='[QIWI Wallet] A bug: a «PUT api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}» request fails when the {bill_id} parameter contains an URL-encoded slash (%2F) despite the API specification does not forbid any characters in {bill_id}'>fails on slash</a>).</p>
+<p class='df-note'>For example, the «<a href='https://mage2.pro/t/512' target='_blank'>Sales Documents Numeration</a>» extension allows you to implement a custom order numeration scheme like <b>ORD-2016/07-00327</b>.</p>
+<p class='df-note'>If you use such non-standard orders numbers, then choose the «<b>Internal ID</b>» value for the «Payment Identification Type» option.</p>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='idPrefix'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='14'
 					translate='label'
 				>
 					<label>Payment ID prefix</label>
@@ -136,7 +154,7 @@ You need to:
 					dfValues='RUB,EUR,USD,KZT'
 					id='currency'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='15'
 					translate='label'
 					type='Df\Directory\FormElement\Currency'
 				>
@@ -146,7 +164,7 @@ You need to:
 				<field
 					id='description'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='16'
 					translate='label'
 					type='textarea'
 				>
@@ -161,7 +179,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='waitPeriod'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='16'
+					sortOrder='17'
 					translate='label'
 					type='text'
 				>
@@ -173,7 +191,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='waitPeriodType'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='17'
+					sortOrder='18'
 					translate='label'
 					type='select'
 				>
@@ -185,7 +203,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='requireBillingAddress'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='18'
+					sortOrder='19'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
 				>
@@ -197,7 +215,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='19'
+					sortOrder='20'
 					translate='label'
 					type='text'
 				>
@@ -209,7 +227,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='20'
+					sortOrder='21'
 					translate='label'
 					type='text'
 				>
@@ -221,7 +239,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='21'
+					sortOrder='22'
 					translate='label'
 					type='select'
 				>
@@ -232,7 +250,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='22'
+					sortOrder='23'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
