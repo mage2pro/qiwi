@@ -16,11 +16,13 @@ https://corp.qiwi.com/en/company/world.action
 <!-- 2017-09-02 [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445 -->
 				<currency>RUB</currency>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
-				<descriptionMaxLength>
-					<title>The GitHub-based documentation: «Pull REST API» → «Issuing Invoice for the Order» → «Parameters». See the «comment» parameter.</title>
-					<url>https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#parameters</url>
-					<value>255</value>
-				</descriptionMaxLength>
+				<description_rules>
+					<maxLength>
+						<title>The GitHub-based documentation: «Pull REST API» → «Issuing Invoice for the Order» → «Parameters». See the «comment» parameter.</title>
+						<url>https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#parameters</url>
+						<value>255</value>
+					</maxLength>
+				</description_rules>
 				<identification_rules>
 <!-- 2017-09-10
 `[QIWI Wallet] A bug: a «PUT api.qiwi.com/api/v2/prv/{prv_id}/bills/{bill_id}» request fails when the {bill_id} parameter contains an URL-encoded slash (%2F) despite the API specification does not forbid any characters in {bill_id}`: https://mage2.pro/t/4479
