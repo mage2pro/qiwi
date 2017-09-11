@@ -15,8 +15,25 @@ https://corp.qiwi.com/en/company/world.action
 				<country_restriction>whitelist</country_restriction>
 <!-- 2017-09-02 [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445 -->
 				<currency>RUB</currency>
-				<description>{store.domain} // {customer.name} // {order.id}</description>
+				<description>{order.items}</description>
 				<description_rules>
+					<locations>
+						<customer>
+							<shown>1</shown>
+							<title><![CDATA[How is a payment's description shown in a customer's QIWI Wallet account?]]></title>
+							<url>https://mage2.pro/t/4482</url>
+						</customer>
+						<merchant>
+							<shown>1</shown>
+							<title><![CDATA[How is a payment's description shown in the QIWI Wallet merchant interface?]]></title>
+							<url>https://mage2.pro/t/4483</url>
+						</merchant>
+						<payment>
+							<shown>1</shown>
+							<title><![CDATA[How is a payment's description shown on the QIWI Wallet payment page?]]></title>
+							<url>https://mage2.pro/t/4481</url>
+						</payment>
+					</locations>
 					<maxLength>
 						<title>The GitHub-based documentation: «Pull REST API» → «Issuing Invoice for the Order» → «Parameters». See the «comment» parameter.</title>
 						<url>https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#parameters</url>
