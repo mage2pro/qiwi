@@ -111,17 +111,30 @@ final class Charge extends \Df\Payment\Charge {
 	 * @return array(string, array(string => mixed))
 	 */
 	function pRedirect() {$s = $this->s(); return [
-		// 2017-09-04
-		// «The URL to which the payer will be redirected
-		// when creation of Visa QIWI Wallet transaction is unsuccessful.
-		// URL must be within merchant's site.»
-		// «URL для переадресации в случае неуспеха при создании транзакции в Visa QIWI Wallet.
-		// Ссылка должна вести на сайт провайдера.
-		// Если пользователь выбрал на платежной форме способ оплаты,
-		// отличный от оплаты с баланса Visa QIWI Wallet,
-		// то переадресация на сайт провайдера не выполняется.»
-		// Optional, string.
-		'failUrl' => $this->customerReturnRemoteWithFailure()
+		/**
+		 * 2017-09-04
+		 * «The URL to which the payer will be redirected
+		 * when creation of Visa QIWI Wallet transaction is unsuccessful.
+		 * URL must be within merchant's site.»
+		 * «URL для переадресации в случае неуспеха при создании транзакции в Visa QIWI Wallet.
+		 * Ссылка должна вести на сайт провайдера.
+		 * Если пользователь выбрал на платежной форме способ оплаты,
+		 * отличный от оплаты с баланса Visa QIWI Wallet,
+		 * то переадресация на сайт провайдера не выполняется.»
+		 * Optional, string.
+		 * 2017-09-12
+		 * *) In English:
+		 * «If creation of transaction is unsuccessful,
+		 * Visa QIWI Wallet redirects user to http://mystore.com/fail?a=1&b=2&order=123123123.»
+		 * «4.3. Redirection for Invoice Payment», page 11.
+		 * *) In Russian:
+		 * «В случае неуспеха при создании транзакции
+		 * сайт Visa QIWI Wallet выполняет возврат клиента на страницу со следующим URL:
+		 * http://mystore.com/fail?a=1&b=2&order=1234567»
+		 * «4.3. Переадресация для оплаты счета», страница 11.
+		 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
+		 */
+		'failUrl' => $this->customerReturnRemote()
 		// 2017-09-04
 		// «This parameter (if true) means that invoice page would be opened in "iframe".
 		// The checkout page appears more compact
@@ -162,16 +175,29 @@ final class Charge extends \Df\Payment\Charge {
 		// Соответствует параметру {prv_id} из запроса на выставление счета.»
 		// Required, string.
 		,'shop' => $s->merchantID()
-		// 2017-09-04
-		// «The URL to which the payer will be redirected
-		// in case of successful creation of Visa QIWI Wallet transaction.
-		// URL must be within merchant's site»
-		// «URL для переадресации в случае успешного создания транзакции в Visa QIWI Wallet.
-		// Ссылка должна вести на сайт провайдера.
-		// Если пользователь выбрал на платежной форме способ оплаты,
-		// отличный от оплаты с баланса Visa QIWI Wallet,
-		// то переадресация на сайт провайдера не выполняется.»
-		// Optional, string.
+		/**
+		 * 2017-09-04
+		 * «The URL to which the payer will be redirected
+		 * in case of successful creation of Visa QIWI Wallet transaction.
+		 * URL must be within merchant's site»
+		 * «URL для переадресации в случае успешного создания транзакции в Visa QIWI Wallet.
+		 * Ссылка должна вести на сайт провайдера.
+		 * Если пользователь выбрал на платежной форме способ оплаты,
+		 * отличный от оплаты с баланса Visa QIWI Wallet,
+		 * то переадресация на сайт провайдера не выполняется.»
+		 * Optional, string.
+		 * 2017-09-12
+		 * *) In English:
+		 * «If transaction is successfully created,
+		 * Visa QIWI Wallet redirects user to http://mystore.com/success?a=1&b=2&order=123123123.»
+		 * «4.3. Redirection for Invoice Payment», page 11.
+		 * *) In Russian:
+		 * «После и успешного создания транзакции
+		 * сайт Visa QIWI Wallet выполняет возврат клиента на сайт провайдера:
+		 * http://mystore.com/success?a=1&b=2&order=1234567»
+		 * «4.3. Переадресация для оплаты счета», страница 11.
+		 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
+		 */
 		,'successUrl' => $this->customerReturnRemote()
 		// 2017-09-04
 		// «"iframe" or empty.
