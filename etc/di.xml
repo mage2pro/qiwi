@@ -4,4 +4,5 @@
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
 >
 	<virtualType name='Dfe\Qiwi\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
+	<virtualType name='Dfe\Qiwi\Controller\Index\Index' type='Df\Payment\W\Action'/>
 </config>
