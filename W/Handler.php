@@ -6,6 +6,9 @@ final class Handler extends \Df\PaypalClone\W\Handler {
 	/**
 	 * 2017-08-12
 	 * In English:
+	 * 1) The GitHub-based documentation:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_notification_en.html.md#requirements-to-the-response-for-notification
+	 * 2) The PDF-based documentation:
 	 * «5.2. Requirements to the Response», page 20
 	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 	 * « The response should be in XML.
@@ -26,6 +29,9 @@ final class Handler extends \Df\PaypalClone\W\Handler {
 	 * and indication on the possible technical issues on the merchant’s server side.»
 	 * 
 	 * In Russian:
+	 * 1) The GitHub-based documentation:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_notification_ru.html.md#Ответ--post
+	 * 2) The PDF-based documentation:
 	 * «5.2. Требования к ответу провайдера», страница 20.
 	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 	 *  Ответ на запрос должен быть в формате XML.
