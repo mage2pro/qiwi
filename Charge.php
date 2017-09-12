@@ -134,7 +134,7 @@ final class Charge extends \Df\Payment\Charge {
 		 * «4.3. Переадресация для оплаты счета», страница 11.
 		 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 		 */
-		'failUrl' => $this->customerReturnRemote()
+		'failUrl' => $this->customerReturnRemoteWithFailure()
 		// 2017-09-04
 		// «This parameter (if true) means that invoice page would be opened in "iframe".
 		// The checkout page appears more compact
