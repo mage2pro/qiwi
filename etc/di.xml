@@ -5,4 +5,5 @@
 >
 	<virtualType name='Dfe\Qiwi\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
 	<virtualType name='Dfe\Qiwi\Controller\Index\Index' type='Df\Payment\W\Action'/>
+	<virtualType name='Dfe\Qiwi\W\Nav' type='Df\PaypalClone\W\Nav'/>
 </config>
