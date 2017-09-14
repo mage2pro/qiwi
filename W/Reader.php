@@ -25,6 +25,7 @@ final class Reader extends \Df\Payment\W\Reader {
 	/**
 	 * 2017-09-14
 	 * @used-by http()
+	 * @used-by \Dfe\Qiwi\Signer::sign()
 	 * @used-by \Dfe\Qiwi\W\Event::k_signature()
 	 */
 	const K__SIGNATURE = 'X-Api-Signature';
