@@ -24,6 +24,16 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-14
+	 * @see \Dfe\Qiwi\W\Reader::http()
+	 * 1) The GitHub-based documentation:
+	 * «The HTTP header X-Api-Signature is added to the POST-request».
+	 * «Подпись уведомления отправляется в заголовке X-Api-Signature».
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_en.html.md#operation-statuses
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_notification_ru.html.md#Авторизация-подписи-sign_notify
+	 * 2) The PDF documentation, page 19:
+	 * «The HTTP header "X-Api-Signature" is added to the POST-request».
+	 * «В HTTP-запрос уведомления добавляется HTTP-заголовок "X-Api-Signature", содержащий цифровую подпись».
+	 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
