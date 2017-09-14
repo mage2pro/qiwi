@@ -4,6 +4,19 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 // 2017-09-14 [QIWI Wallet] An example of a webhook notification: https://mage2.pro/t/4487
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
+	 * 2017-09-14 The payment's identifier in the PSP.
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::idE()
+	 * @used-by \Df\PaypalClone\W\Nav::id()
+	 * @used-by \Dfe\AllPay\Block\Info::prepare()
+	 * @used-by \Dfe\IPay88\Block\Info::prepare()
+	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
+	 * @used-by \Dfe\SecurePay\Block\Info::prepare()
+	 * @return string
+	 */
+	function idE() {return $this->pid();}
+
+	/**
 	 * 2017-09-14
 	 * «Operation Statuses»:
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_en.html.md#operation-statuses
@@ -17,6 +30,24 @@ final class Event extends \Df\PaypalClone\W\Event {
 	function isSuccessful() {return !in_array($this->status(), [
 		self::$S_EXPIRED, self::$S_FAIL, self::$S_REJECTED, self::$S_UNPAID
 	]);}
+
+	/**
+	 * 2017-09-14
+	 * A comment for the
+	 * «Settings» → «REST-протокол» → «Test protocol form» → «Invoice number» field
+	 * in the merchant interface: «Test transactions will be marked with _TEST_ prefix».
+	 * Комментарий к полю «Настройки» → «REST-протокол» → «Тестовая форма протокола» → «Номер счета»
+	 * в личном кабинете магазина в QIWI Waller:
+	 * «В тестовой транзакции перед номером будет добавлено значение _TEST_».
+	 * @override
+	 * @see \Df\Payment\W\Event::pid()
+	 * @used-by \Df\Payment\W\Nav::pid()
+	 * @used-by \Df\PaypalClone\W\Event::idE()
+	 * @used-by \Df\StripeClone\W\Event::idBase()
+	 * @used-by \Dfe\Robokassa\W\Responder::success()
+	 * @return string
+	 */
+	function pid() {return df_trim_text_left(parent::pid(), '_TEST_');}
 
 	/**
 	 * 2017-09-14 The type of the current transaction.
@@ -38,18 +69,17 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-14
+	 * It is never used. @see idE()
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
-	 * @used-by \Df\PaypalClone\W\Event::idE()
 	 * @return string
 	 */
-	protected function k_idE() {return $this->k_pid();}
+	protected function k_idE() {df_should_not_be_here(); return '';}
 
 	/**
 	 * 2017-09-14
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
-	 * @used-by k_idE()
 	 * @used-by \Df\Payment\W\Event::pid()
 	 * @return string
 	 */
