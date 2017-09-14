@@ -5,6 +5,85 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-09-14
+	 * «Operation Statuses»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_en.html.md#operation-statuses
+	 * «Статусы операций»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_ru.html.md#Статусы-операций
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::isSuccessful()
+	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @return bool
+	 */
+	function isSuccessful() {return !in_array($this->status(), [
+		self::$S_EXPIRED, self::$S_FAIL, self::$S_REJECTED, self::$S_UNPAID
+	]);}
+
+	/**
+	 * 2017-09-14 The type of the current transaction.
+	 * «Operation Statuses»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_en.html.md#operation-statuses
+	 * «Статусы операций»:
+	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_statuses_ru.html.md#Статусы-операций
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::ttCurrent()
+	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @used-by \Df\PaypalClone\W\Nav::id()
+	 */
+	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+		self::$S_PROCESSING => self::T_INFO
+		,self::$S_SUCCESS => self::T_REFUND
+		,self::$S_WAITING => self::T_INFO
+		,self::$S_PAID => self::T_CAPTURE
+	], $this->status());}
+
+	/**
+	 * 2017-09-14 «Invoice expired. Invoice has not been paid.» / «Время жизни счета истекло. Счет не оплачен.»
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_EXPIRED = 'expired';
+	/**
+	 * 2017-09-14 «Payment refund is unsuccessful» / «Платеж неуспешен».
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_FAIL = 'fail';
+	/**
+	 * 2017-09-14 «Invoice has been paid» / «Счет оплачен».
+	 * @var string
+	 */
+	private static $S_PAID = 'paid';
+	/**
+	 * 2017-09-14 «Payment refund is pending» / «Платеж в проведении».
+	 * @var string
+	 */
+	private static $S_PROCESSING = 'processing';
+	/**
+	 * 2017-09-14 «Invoice has been rejected» / «Счет отклонен».
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_REJECTED = 'rejected';
+	/**
+	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».
+	 * @var string
+	 */
+	private static $S_SUCCESS = 'success';
+	/**
+	 * 2017-09-14
+	 * «Payment processing error. Invoice has not been paid.»/ «Ошибка при проведении оплаты. Счет не оплачен.»
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_UNPAID = 'unpaid';
+	/**
+	 * 2017-09-14 «Invoice issued, pending payment» / «Счет выставлен, ожидает оплаты».
+	 * @var string
+	 */
+	private static $S_WAITING = 'waiting';
+
+	/**
+	 * 2017-09-14
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
