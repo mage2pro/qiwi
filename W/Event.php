@@ -44,6 +44,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\Payment\W\Nav::pid()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
 	 * @used-by \Df\StripeClone\W\Event::idBase()
+	 * @used-by \Dfe\Qiwi\W\Handler::amount()
 	 * @used-by \Dfe\Robokassa\W\Responder::success()
 	 * @return string
 	 */
@@ -59,10 +60,11 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @see \Df\PaypalClone\W\Event::ttCurrent()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @used-by \Df\PaypalClone\W\Nav::id()
+	 * @used-by \Dfe\Qiwi\W\Handler::strategyC()
 	 */
 	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
 		self::$S_PROCESSING => self::T_INFO
-		,self::$S_SUCCESS => self::T_REFUND
+		,self::S_SUCCESS => self::T_REFUND
 		,self::$S_WAITING => self::T_INFO
 		,self::$S_PAID => self::T_CAPTURE
 	], $this->status());}
@@ -118,6 +120,12 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_status() {return 'status';}
 
 	/**
+	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».
+	 * @var string
+	 */
+	const S_SUCCESS = 'success';
+
+	/**
 	 * 2017-09-14 «Invoice expired. Invoice has not been paid.» / «Время жизни счета истекло. Счет не оплачен.»
 	 * @used-by isSuccessful()
 	 * @var string
@@ -145,11 +153,6 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @var string
 	 */
 	private static $S_REJECTED = 'rejected';
-	/**
-	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».
-	 * @var string
-	 */
-	private static $S_SUCCESS = 'success';
 	/**
 	 * 2017-09-14
 	 * «Payment processing error. Invoice has not been paid.»/ «Ошибка при проведении оплаты. Счет не оплачен.»
