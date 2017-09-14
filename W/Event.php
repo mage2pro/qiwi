@@ -37,52 +37,6 @@ final class Event extends \Df\PaypalClone\W\Event {
 	], $this->status());}
 
 	/**
-	 * 2017-09-14 «Invoice expired. Invoice has not been paid.» / «Время жизни счета истекло. Счет не оплачен.»
-	 * @used-by isSuccessful()
-	 * @var string
-	 */
-	private static $S_EXPIRED = 'expired';
-	/**
-	 * 2017-09-14 «Payment refund is unsuccessful» / «Платеж неуспешен».
-	 * @used-by isSuccessful()
-	 * @var string
-	 */
-	private static $S_FAIL = 'fail';
-	/**
-	 * 2017-09-14 «Invoice has been paid» / «Счет оплачен».
-	 * @var string
-	 */
-	private static $S_PAID = 'paid';
-	/**
-	 * 2017-09-14 «Payment refund is pending» / «Платеж в проведении».
-	 * @var string
-	 */
-	private static $S_PROCESSING = 'processing';
-	/**
-	 * 2017-09-14 «Invoice has been rejected» / «Счет отклонен».
-	 * @used-by isSuccessful()
-	 * @var string
-	 */
-	private static $S_REJECTED = 'rejected';
-	/**
-	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».
-	 * @var string
-	 */
-	private static $S_SUCCESS = 'success';
-	/**
-	 * 2017-09-14
-	 * «Payment processing error. Invoice has not been paid.»/ «Ошибка при проведении оплаты. Счет не оплачен.»
-	 * @used-by isSuccessful()
-	 * @var string
-	 */
-	private static $S_UNPAID = 'unpaid';
-	/**
-	 * 2017-09-14 «Invoice issued, pending payment» / «Счет выставлен, ожидает оплаты».
-	 * @var string
-	 */
-	private static $S_WAITING = 'waiting';
-
-	/**
 	 * 2017-09-14
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
@@ -132,4 +86,50 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return string
 	 */
 	protected function k_status() {return 'status';}
+
+	/**
+	 * 2017-09-14 «Invoice expired. Invoice has not been paid.» / «Время жизни счета истекло. Счет не оплачен.»
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_EXPIRED = 'expired';
+	/**
+	 * 2017-09-14 «Payment refund is unsuccessful» / «Платеж неуспешен».
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_FAIL = 'fail';
+	/**
+	 * 2017-09-14 «Invoice has been paid» / «Счет оплачен».
+	 * @var string
+	 */
+	private static $S_PAID = 'paid';
+	/**
+	 * 2017-09-14 «Payment refund is pending» / «Платеж в проведении».
+	 * @var string
+	 */
+	private static $S_PROCESSING = 'processing';
+	/**
+	 * 2017-09-14 «Invoice has been rejected» / «Счет отклонен».
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_REJECTED = 'rejected';
+	/**
+	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».
+	 * @var string
+	 */
+	private static $S_SUCCESS = 'success';
+	/**
+	 * 2017-09-14
+	 * «Payment processing error. Invoice has not been paid.»/ «Ошибка при проведении оплаты. Счет не оплачен.»
+	 * @used-by isSuccessful()
+	 * @var string
+	 */
+	private static $S_UNPAID = 'unpaid';
+	/**
+	 * 2017-09-14 «Invoice issued, pending payment» / «Счет выставлен, ожидает оплаты».
+	 * @var string
+	 */
+	private static $S_WAITING = 'waiting';
 }
