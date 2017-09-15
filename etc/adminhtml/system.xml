@@ -30,7 +30,7 @@
 				>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
 					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/qiwi' target='_blank'>QIWI Wallet</a>» payment extension?
-You need to:
+<br/>You need to:
 <ul class='df-note'>
 <li><a href='https://mage2.pro/t/4437' target='_blank' title='[QIWI Wallet] How to enable the «HTTP-protocol» («HTTP-протокол»)?'>enable the «HTTP-protocol»</a></li>
 <li><a href='https://mage2.pro/t/4438' target='_blank' title='[QIWI Wallet] How to setup the webhook notifications?'>setup the webhook notifications</a></li>
