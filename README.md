@@ -8,6 +8,13 @@ Today QIWI payment service is offered in [8 countries](https://corp.qiwi.com/en/
 ### Backend settings
 ![](https://mage2.pro/uploads/default/original/2X/e/e5a6acb10472fb8ebb69cd3e2f181d76742bb618.png)
 
+### Some additonal screenshots:
+
+- [The extension settings](https://mage2.pro/t/topic/4444).
+- [How is a payment's description shown on the **QIWI Wallet payment page**?](https://mage2.pro/t/topic/4481)
+- [How is a payment's description shown in a **customer's QIWI Wallet account**?](https://mage2.pro/t/topic/4482)
+- [How is a payment's description shown in the **QIWI Wallet merchant interface**?](https://mage2.pro/t/topic/4483)
+
 ## How to buy
 You can buy it with PayPal [here](https://mage2.pro/t/3669).  
 There are [local payment options](http://magento-forum.ru/topic/1003) available to Russia-based customers.
