@@ -79,7 +79,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by action()
 	 * @return string|null
 	 */
-	protected function transId() {return $this->e2i($this->charge()->id(), Ev::T_INIT);}
+	protected function transId() {return $this->e2i($this->charge()->id());}
 
 	/**
 	 * 2017-09-04
