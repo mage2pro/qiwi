@@ -9,7 +9,7 @@ final class Settings extends \Df\Payment\Settings {
 	 * @used-by \Dfe\Qiwi\API\Client::headers()
 	 * @return string
 	 */
-	function apiID() {return $this->v();}
+	function apiID() {return $this->i();}
 
 	/**
 	 * 2017-09-02 «API password».
