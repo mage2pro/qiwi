@@ -32,7 +32,9 @@ final class Method extends \Df\Payment\Method {
 	function phone() {return $this->iia(self::$II_PHONE);}
 	
 	/**
-	 * 2017-04-18
+	 * 2017-09-18
+	 * `[QIWI Wallet] What are the minimum and maximum payment amount limitations
+	 * for each payment option and currency?` https://mage2.pro/t/4526
 	 * @override
 	 * @see \Df\Payment\Method::amountLimits()
 	 * @used-by \Df\Payment\Method::isAvailable()
