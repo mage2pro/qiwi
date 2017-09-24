@@ -8,10 +8,6 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::idE()
 	 * @used-by \Df\PaypalClone\W\Nav::id()
-	 * @used-by \Dfe\AllPay\Block\Info::prepare()
-	 * @used-by \Dfe\IPay88\Block\Info::prepare()
-	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
-	 * @used-by \Dfe\SecurePay\Block\Info::prepare()
 	 * @return string
 	 */
 	function idE() {return $this->pid();}
