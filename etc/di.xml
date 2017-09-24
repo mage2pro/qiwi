@@ -5,5 +5,10 @@
 >
 	<virtualType name='Dfe\Qiwi\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
 	<virtualType name='Dfe\Qiwi\Controller\Index\Index' type='Df\Payment\W\Action'/>
+<!-- 2017-09-24
+\Dfe\Qiwi\Method does not inherit from Df\PaypalClone\Method,
+so we declare the virtualType here to force the automatic Nav class to use Df\PaypalClone\W\Nav for QIWI.
+@see \Df\Payment\W\F::nav()
+-->
 	<virtualType name='Dfe\Qiwi\W\Nav' type='Df\PaypalClone\W\Nav'/>
 </config>
