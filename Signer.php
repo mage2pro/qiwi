@@ -11,7 +11,7 @@ final class Signer extends \Df\PaypalClone\Signer {
 	 * @used-by \Df\PaypalClone\Signer::_sign()
 	 * @return string
 	 */
-	final protected function sign() {return base64_encode(self::hexToStr(hash_hmac('sha1',
+	protected function sign() {return base64_encode(self::hexToStr(hash_hmac('sha1',
 		implode('|', df_ksort(df_clean_keys($this->v(), Reader::K__SIGNATURE)))
 		,$this->s()->password2()
 	)));}
