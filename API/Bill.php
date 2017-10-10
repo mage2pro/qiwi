@@ -19,5 +19,5 @@ final class Bill extends \Df\API\Facade {
 	 * @return O
 	 * @throws DFE
 	 */
-	function refund($id, $refundId) {return $this->p($id, Z::PUT, "bills/$id/refund/$refundId");}
+	function refund($id, $refundId) {return $this->p($id, Z::PUT, "refund/$refundId");}
 }

@@ -15,7 +15,7 @@ final class Client extends \Df\API\Client {
 	protected function _construct() {
 		parent::_construct();
 		$this->resJson();
-		$this->addFilterRes(function($v) {return $v['response'];});
+		$this->addFilterResBV(function($v) {return $v['response'];});
 	}
 
 	/**
@@ -65,7 +65,7 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::p()
 	 * @return string
 	 */
-	final protected function responseValidatorC() {return \Dfe\Qiwi\API\Validator::class;}
+	protected function responseValidatorC() {return \Dfe\Qiwi\API\Validator::class;}
 
 	/**
 	 * 2017-09-03
