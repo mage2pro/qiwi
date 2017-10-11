@@ -26,8 +26,7 @@ return parent.extend({
 	initialize: function() {
 		this._super();
 		/** @type {Object} */ var c = window.checkoutConfig.customerData;
-		var _this = this;
-		baChange(function(a) {
+		baChange(this, function(a) {
 			var newValue = null;
 			if (a.telephone) {
 				newValue = a.telephone;
@@ -36,8 +35,8 @@ return parent.extend({
 				newValue = c.telephone;
 			}
 			if (newValue) {
-				_this.phone(newValue);
-				var $form = _this.dfForm();
+				this.phone(newValue);
+				var $form = this.dfForm();
 				if ($form) {
 					$('[type=tel]', $form).intlTelInput('setNumber', newValue);
 				}
