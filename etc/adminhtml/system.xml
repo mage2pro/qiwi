@@ -156,7 +156,7 @@ knowing only the order's visible identifier.</p>
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='15'
 					translate='label'
-					type='Df\Directory\FormElement\Currency'
+					type='Df\Directory\FE\Currency'
 				>
 					<label>Payment Currency</label>
 					<depends><field id='enable'>1</field></depends>
