@@ -27,13 +27,7 @@ return parent.extend({
 		this._super();
 		/** @type {Object} */ var c = window.checkoutConfig.customerData;
 		baChange(this, function(a) {
-			var newValue = null;
-			if (a.telephone) {
-				newValue = a.telephone;
-			}
-			else if (c && c.telephone) {
-				newValue = c.telephone;
-			}
+			/** @type {?String} */ var newValue = a.telephone || (c && c.telephone ? c.telephone : null);
 			if (newValue) {
 				this.phone(newValue);
 				var $form = this.dfForm();
