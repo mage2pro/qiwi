@@ -1,7 +1,7 @@
 // 2017-09-06
 define([
-	'df', 'Df_Payment/billingAddressChange', 'Df_Payment/custom', 'jquery'
-], function(df, baChange, parent, $) {'use strict';
+	'df', 'df-lodash', 'Df_Payment/billingAddressChange', 'Df_Payment/custom', 'jquery'
+], function(df, _, baChange, parent, $) {'use strict';
 /** 2017-09-06 @uses Class::extend() https://github.com/magento/magento2/blob/2.2.0-rc2.3/app/code/Magento/Ui/view/base/web/js/lib/core/class.js#L106-L140 */
 return parent.extend({
 	defaults: {df: {formTemplate: 'Dfe_Qiwi/main'}, phone: ''},
@@ -16,7 +16,7 @@ return parent.extend({
 	 * @see Df_Payment/mixin::dfData()
 	 * @returns {Object}
 	 */
-	dfData: function() {return df.o.merge(this._super(), {phone: df.s.normalizePhone(this.phone())});},
+	dfData: function() {return _.assign(this._super(), {phone: df.s.normalizePhone(this.phone())});},
 	/**
 	 * 2017-09-06
 	 * @override
