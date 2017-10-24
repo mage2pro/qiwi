@@ -50,7 +50,6 @@ https://corp.qiwi.com/en/company/world.action
 					</regex>
 				</identification_rules>
 				<requireBillingAddress>1</requireBillingAddress>
-				<payment_action>authorize_capture</payment_action>
 				<title>QIWI Wallet</title>
 				<title_backend>QIWI Wallet</title_backend>
 <!-- 2017-09-05 [QIWI Wallet] What is the maximum unpaid invoice lifetime? https://mage2.pro/t/4453 -->
