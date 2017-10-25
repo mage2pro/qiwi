@@ -10,4 +10,7 @@
 			</argument>
 		</arguments>
 	</type>
+	<virtualType name='Dfe\Qiwi\ConfigProvider' type='Df\Payment\ConfigProvider'>
+		<arguments><argument name='module' xsi:type='string'>Dfe_Qiwi</argument></arguments>
+	</virtualType>
 </config>
