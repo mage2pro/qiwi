@@ -1,4 +1,4 @@
-The extension integrates your Magento 2 store with the [Visa QIWI Wallet](https://corp.qiwi.com/en/business/onlineshops.action) (QIWI Кошелёк) payment service.  
+The extension integrates your Magento 2 based webstore with the [Visa QIWI Wallet](https://corp.qiwi.com/en/business/onlineshops.action) (QIWI Кошелёк) payment service.  
 Today QIWI payment service is offered in [8 countries](https://corp.qiwi.com/en/company/world.action): Russia, Kazakhstan, Moldova, Romania, Belarus, United States, Brazil, Jordan.
 
 ## Screenshots
