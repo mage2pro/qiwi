@@ -57,10 +57,10 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @override
 	 * @see \Df\Payment\W\Responder::error()
 	 * @used-by \Df\Payment\W\Responder::setError()
-	 * @param \Exception $e
+	 * @param \Exception|string $e
 	 * @return Result
 	 */
-	protected function error(\Exception $e) {return Result::i(1)->setHttpResponseCode(500);}
+	protected function error($e) {return Result::i(1)->setHttpResponseCode(500);}
 
 	/**
 	 * 2017-09-12
