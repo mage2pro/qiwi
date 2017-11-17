@@ -1,12 +1,15 @@
 <?php
 namespace Dfe\Qiwi;
-use Magento\Framework\App\Response\Http;
-use Magento\Framework\App\Response\HttpInterface as IHttp;
+use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\Framework\App\Response\HttpInterface as IHttpResponse;
 // 2017-09-12
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
 class Result extends \Df\Framework\W\Result {
 	/**
 	 * 2017-09-13
+	 * 2017-11-17
+	 * We can use the PHP «final» keyword here,
+	 * because the method is absent in @see \Magento\Framework\Controller\ResultInterface
 	 * @override
 	 * @see \Df\Framework\W\Result::__toString()
 	 * @used-by render()
@@ -20,15 +23,13 @@ class Result extends \Df\Framework\W\Result {
 	 * QIWI Wallet requires it to be «text/xml», not «application/xml»:
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_notification_en.html.md#requirements-to-the-response-for-notification
 	 * @override
-	 * @see \Magento\Framework\Controller\AbstractResult::render()
-	 * https://github.com/magento/magento2/blob/2.1.0/lib/internal/Magento/Framework/Controller/AbstractResult.php#L109-L113
-	 * @param IHttp|Http $res
-	 * @return $this
+	 * @see \Df\Framework\W\Result::render()
+	 * @used-by \Df\Framework\W\Result::renderResult()
+	 * @param IHttpResponse|HttpResponse $r
 	 */
-	final protected function render(IHttp $res) {
-		$res->setBody($this->__toString());
-		df_response_content_type('text/xml', $res);
-		return $this;
+	final protected function render(IHttpResponse $r) {
+		$r->setBody($this->__toString());
+		df_response_content_type('text/xml', $r);
 	}
 
 	/**
