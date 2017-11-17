@@ -4,11 +4,11 @@ use Magento\Framework\App\Response\Http;
 use Magento\Framework\App\Response\HttpInterface as IHttp;
 // 2017-09-12
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
-class Response extends \Df\Framework\W\Response {
+class Result extends \Df\Framework\W\Result {
 	/**
 	 * 2017-09-13
 	 * @override
-	 * @see \Df\Framework\W\Response::__toString()
+	 * @see \Df\Framework\W\Result::__toString()
 	 * @used-by render()
 	 * @used-by \Df\Payment\W\Action::execute()
 	 * @return string
