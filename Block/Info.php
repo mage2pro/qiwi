@@ -7,7 +7,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * 2017-04-18
 	 * @override
 	 * @see \Df\Payment\Block\Info::prepare()
-	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
+	 * @used-by \Df\Payment\Block\Info::prepareToRendering()
 	 */
 	final protected function prepare() {}
 }
