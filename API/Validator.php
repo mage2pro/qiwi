@@ -11,20 +11,11 @@ final class Validator extends \Df\API\Response\Validator {
 	 * 2017-09-03
 	 * @override
 	 * @see \Df\API\Exception::long()
-	 * @used-by short()
 	 * @used-by \Df\API\Client::_p()
+	 * @used-by \Df\API\Exception::short()
 	 * @return string
 	 */
 	function long() {return dfa($this->codes(), $this->code());}
-
-	/**
-	 * 2017-09-03
-	 * @override
-	 * @see \Df\API\Exception::short()
-	 * @used-by \Df\API\Client::_p()
-	 * @return string
-	 */
-	function short() {return $this->long();}
 
 	/**
 	 * 2017-09-03
