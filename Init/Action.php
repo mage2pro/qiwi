@@ -62,7 +62,7 @@ final class Action extends \Df\Payment\Init\Action {
 		$c = $this->charge(); /** @var Charge $c */
 		/** @var M $m */ /** @var array(string => mixed) $req */
 		df_sentry_extra($m = $this->m(), 'Request Params', $req = $c->pBill());
-		$res = Bill::s()->put([$c->id(), $req]); /** @var array(string => mixed) $res */
+		$res = Bill::s()->put($req, $c->id()); /** @var array(string => mixed) $res */
 		$m->iiaSetTRR($req, $res);
 		dfp_report($m, ['Request' => $req, 'Response' => $res], 'preorder');
 	}
