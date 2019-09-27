@@ -49,9 +49,9 @@ return parent.extend({
 	 * @used-by Magento_Ui/js/lib/core/element/element::initialize()
 	 * https://github.com/magento/magento2/blob/2.2.0-RC1.3/app/code/Magento/Ui/view/base/web/js/lib/core/element/element.js#L104
 	 * @override
-	 * @see Magento_Payment/js/view/payment/cc-form::initObservable()
-	 * https://github.com/magento/magento2/blob/2.2.0-RC1.3/app/code/Magento/Payment/view/frontend/web/js/view/payment/cc-form.js#L29-L45
+	 * @see Magento_Ui/js/lib/core/collection::initObservable()
+	 * https://github.com/magento/magento2/blob/2.3.2/app/code/Magento/Ui/view/base/web/js/lib/core/collection.js#L36-L48
 	 * @returns {Element} Chainable
 	*/
-	initObservable: function() {this._super(); this.observe(['phone']); return this;},
+	initObservable: function() {return this._super().observe(['phone']);},
 });});
