@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Qiwi;
 use Df\Config\Source\WaitPeriodType;
-// 2017-09-02 The «QIWI Wallet» PSP does not provide a test mode: https://mage2.pro/t/4443
+# 2017-09-02 The «QIWI Wallet» PSP does not provide a test mode: https://mage2.pro/t/4443
 /** @method static Settings s() */
 final class Settings extends \Df\Payment\Settings {
 	/**

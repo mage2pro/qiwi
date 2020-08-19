@@ -2,7 +2,7 @@
 namespace Dfe\Qiwi;
 use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\Framework\App\Response\HttpInterface as IHttpResponse;
-// 2017-09-12
+# 2017-09-12
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
 class Result extends \Df\Framework\W\Result {
 	/**

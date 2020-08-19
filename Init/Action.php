@@ -4,7 +4,7 @@ use Dfe\Qiwi\API\Bill;
 use Dfe\Qiwi\Charge;
 use Dfe\Qiwi\Method as M;
 use Dfe\Qiwi\W\Event as Ev;
-// 2017-09-02
+# 2017-09-02
 /** @method \Dfe\Qiwi\Method m() */
 final class Action extends \Df\Payment\Init\Action {
 	/**

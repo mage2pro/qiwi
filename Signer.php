@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Qiwi;
 use Dfe\Qiwi\W\Reader;
-// 2017-09-14
+# 2017-09-14
 /** @method Settings s() */
 final class Signer extends \Df\PaypalClone\Signer {
 	/**

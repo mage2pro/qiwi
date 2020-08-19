@@ -2,7 +2,7 @@
 namespace Dfe\Qiwi\W;
 use Df\Payment\W\Strategy\ConfirmPending;
 use \Df\Payment\W\Strategy\Refund;
-// 2017-09-14
+# 2017-09-14
 /** @method Event e() */
 final class Handler extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefund {
 	/**

@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Qiwi\W;
-// 2017-09-14
+# 2017-09-14
 final class Reader extends \Df\Payment\W\Reader {
 	/**
 	 * 2017-09-14

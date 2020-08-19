@@ -46,52 +46,52 @@ final class Charge extends \Df\Payment\Charge {
 		 * @see \Dfe\Qiwi\Method::amountFormat()
 		 */
 		'amount' => $this->amountF()
-		// 2017-09-04
-		// 1) The GitHub-based documentation:
-		// «Invoice currency identifier (Alpha-3 ISO 4217 code).
-		// Depends on currencies allowed for the merchant.
-		// The following values are supported: RUB, EUR, USD, KZT.»
-		// «Идентификатор валюты (Alpha-3 ISO 4217 код).
-		// Может использоваться любая валюта, предусмотренная договором с КИВИ.»
-		// As you can see, the English and Russian versions of the same documentation
-		// contain a contradictory information about currencies.
-		// [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445
-		// 2) The PDF documentation: «Three-letter abbreviation» / «Трёхбуквенная аббревиатура».
-		// Required, string(3). Regex: ^[a-zA-Z]{3}$
+		# 2017-09-04
+		# 1) The GitHub-based documentation:
+		# «Invoice currency identifier (Alpha-3 ISO 4217 code).
+		# Depends on currencies allowed for the merchant.
+		# The following values are supported: RUB, EUR, USD, KZT.»
+		# «Идентификатор валюты (Alpha-3 ISO 4217 код).
+		# Может использоваться любая валюта, предусмотренная договором с КИВИ.»
+		# As you can see, the English and Russian versions of the same documentation
+		# contain a contradictory information about currencies.
+		# [QIWI Wallet] Which currencies are supported by the REST API? https://mage2.pro/t/4445
+		# 2) The PDF documentation: «Three-letter abbreviation» / «Трёхбуквенная аббревиатура».
+		# Required, string(3). Regex: ^[a-zA-Z]{3}$
 		,'ccy' => $this->currencyC()
-		// 2017-09-04
-		// 1) The GitHub-based documentation: «Comment to the invoice» / «Комментарий к счету».
-		// 2) The PDF documentation: «Any text up to 255 symbols» / «Любой текст».
-		// Required, string(255). Regex: ^\.{0,255}$
+		# 2017-09-04
+		# 1) The GitHub-based documentation: «Comment to the invoice» / «Комментарий к счету».
+		# 2) The PDF documentation: «Any text up to 255 symbols» / «Любой текст».
+		# Required, string(255). Regex: ^\.{0,255}$
 		,'comment' => $this->description()
 		,'lifetime' => $this->lifetime()
-		// 2017-09-04
-		// 1) The GitHub-based documentation:
-		// «If the value is "mobile" the user’s MNO balance will be used as a funding source.
-		// If the value is "qw", any other funding source is used available in Visa QIWI Wallet interface.
-		// If parameter isn’t present, value "qw" is assumed.»
-		// «"mobile" - оплата счета будет производиться с баланса мобильного телефона пользователя,
-		// "qw" – любым способом через интерфейс Visa QIWI Wallet.
-		// По умолчанию "qw".»
-		// 2) The PDF documentation: «"mobile", "qw"».
-		// Optional, string. Regex: ^((mobile)|(qw)){1}$
+		# 2017-09-04
+		# 1) The GitHub-based documentation:
+		# «If the value is "mobile" the user’s MNO balance will be used as a funding source.
+		# If the value is "qw", any other funding source is used available in Visa QIWI Wallet interface.
+		# If parameter isn’t present, value "qw" is assumed.»
+		# «"mobile" - оплата счета будет производиться с баланса мобильного телефона пользователя,
+		# "qw" – любым способом через интерфейс Visa QIWI Wallet.
+		# По умолчанию "qw".»
+		# 2) The PDF documentation: «"mobile", "qw"».
+		# Optional, string. Regex: ^((mobile)|(qw)){1}$
 		,'pay_source' => 'qw'
-		// 2017-09-04
-		// 1) The GitHub-based documentation: «Merchant’s name» / «Название провайдера».
-		// 2) The PDF documentation: «Any text, not more than 100 symbols» / «Произвольная строка до 100 символов»
-		// Optional, string(100). Regex: ^\.{1,100}$
+		# 2017-09-04
+		# 1) The GitHub-based documentation: «Merchant’s name» / «Название провайдера».
+		# 2) The PDF documentation: «Any text, not more than 100 symbols» / «Произвольная строка до 100 символов»
+		# Optional, string(100). Regex: ^\.{1,100}$
 		,'prv_name' => df_chop($this->store()->getFrontendName(), 100)
-		// 2017-09-04
-		// 1) The GitHub-based documentation:
-		// «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
-		// It is the user’s phone number with "tel:" prefix.»
-		// «Идентификатор номера QIWI Wallet, на который выставляется счет (в международном формате),
-		// с префиксом "tel:".»
-		// 2) The PDF documentation:
-		// «String of the form "tel:phone_number",
-		// where "phone_number" – wireless phone number in international format.»
-		// «Строка вида "tel:phone_number", где phone_number – номер мобильного телефона в международном формате.»
-		// Required, string(20). Regex: ^tel:\+\d{1,15}$
+		# 2017-09-04
+		# 1) The GitHub-based documentation:
+		# «The Visa QIWI Wallet user’s ID, to whom the invoice is issued.
+		# It is the user’s phone number with "tel:" prefix.»
+		# «Идентификатор номера QIWI Wallet, на который выставляется счет (в международном формате),
+		# с префиксом "tel:".»
+		# 2) The PDF documentation:
+		# «String of the form "tel:phone_number",
+		# where "phone_number" – wireless phone number in international format.»
+		# «Строка вида "tel:phone_number", где phone_number – номер мобильного телефона в международном формате.»
+		# Required, string(20). Regex: ^tel:\+\d{1,15}$
 		,'user' => "tel:{$this->m()->phone()}"
 	];}
 
@@ -135,45 +135,45 @@ final class Charge extends \Df\Payment\Charge {
 		 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 		 */
 		'failUrl' => $this->customerReturnRemoteWithFailure()
-		// 2017-09-04
-		// «This parameter (if true) means that invoice page would be opened in "iframe".
-		// The checkout page appears more compact
-		// and can be embedded conveniently within the merchant’s site.
-		// Default value is false.»
-		// «Признак отображения страницы в iframe
-		// (более компактный вид, удобный для встраивания ее в сайт провайдера).
-		// По умолчанию false»
-		// Optional, true/false.
+		# 2017-09-04
+		# «This parameter (if true) means that invoice page would be opened in "iframe".
+		# The checkout page appears more compact
+		# and can be embedded conveniently within the merchant’s site.
+		# Default value is false.»
+		# «Признак отображения страницы в iframe
+		# (более компактный вид, удобный для встраивания ее в сайт провайдера).
+		# По умолчанию false»
+		# Optional, true/false.
 		,'iframe' => false
-		// 2017-09-04
-		// «Accepts mobile, qw, card, wm, ssk.
-		// Default payment method to show first for the client.
-		// Allowed values:
-		// 		card – a credit/debit card;
-		// 		mobile – client’s cell phone account;
-		// 		qw – Visa QIWI Wallet account;
-		// 		ssk – payment by cash in a QIWI Terminal;
-		// 		wm – linked WebMoney wallet.
-		// When specified method is inaccessible for the Customer,
-		// the page contains notice about it and the client can choose another method.»
-		// «Способ оплаты по умолчанию,
-		// который необходимо отобразить пользователю при открытии платежной формы.
-		// Возможные значения:
-		// 		card – оплата банковской картой;
-		// 		mobile – оплата с баланса мобильного телефона;
-		// 		qw – оплата с баланса Visa QIWI Wallet;
-		// 		ssk – оплата наличными в терминале QIWI;
-		// 		wm – оплата с привязанного кошелька WebMoney.
-		// Если способ оплаты не доступен, пользователю отображается предупреждение,
-		// при этом на странице можно выбрать другие способы оплаты.»
-		// Optional, string.
+		# 2017-09-04
+		# «Accepts mobile, qw, card, wm, ssk.
+		# Default payment method to show first for the client.
+		# Allowed values:
+		# 		card – a credit/debit card;
+		# 		mobile – client’s cell phone account;
+		# 		qw – Visa QIWI Wallet account;
+		# 		ssk – payment by cash in a QIWI Terminal;
+		# 		wm – linked WebMoney wallet.
+		# When specified method is inaccessible for the Customer,
+		# the page contains notice about it and the client can choose another method.»
+		# «Способ оплаты по умолчанию,
+		# который необходимо отобразить пользователю при открытии платежной формы.
+		# Возможные значения:
+		# 		card – оплата банковской картой;
+		# 		mobile – оплата с баланса мобильного телефона;
+		# 		qw – оплата с баланса Visa QIWI Wallet;
+		# 		ssk – оплата наличными в терминале QIWI;
+		# 		wm – оплата с привязанного кошелька WebMoney.
+		# Если способ оплаты не доступен, пользователю отображается предупреждение,
+		# при этом на странице можно выбрать другие способы оплаты.»
+		# Optional, string.
 		,'pay_source' => ''
-		// 2017-09-04
-		// «Merchant’s ID in Visa QIWI Wallet system,
-		// corresponds to {prv_id} parameter used to create the bill.»
-		// «Идентификатор провайдера.
-		// Соответствует параметру {prv_id} из запроса на выставление счета.»
-		// Required, string.
+		# 2017-09-04
+		# «Merchant’s ID in Visa QIWI Wallet system,
+		# corresponds to {prv_id} parameter used to create the bill.»
+		# «Идентификатор провайдера.
+		# Соответствует параметру {prv_id} из запроса на выставление счета.»
+		# Required, string.
 		,'shop' => $s->merchantID()
 		/**
 		 * 2017-09-04
@@ -199,20 +199,20 @@ final class Charge extends \Df\Payment\Charge {
 		 * `[QIWI Wallet] The REST API specification (v.2.12)`, https://mage2.pro/t/3745
 		 */
 		,'successUrl' => $this->customerReturnRemote()
-		// 2017-09-04
-		// «"iframe" or empty.
-		// This parameter means that hyperlink specified in successUrl / failUrl parameter
-		// opens in "iframe" page.»
-		// «Флаг, показывающий, что ссылки в параметрах successUrl / failUrl открываются в iframe.
-		// Если отсутствует, то считается выключенным.»
-		// Optional, string.
+		# 2017-09-04
+		# «"iframe" or empty.
+		# This parameter means that hyperlink specified in successUrl / failUrl parameter
+		# opens in "iframe" page.»
+		# «Флаг, показывающий, что ссылки в параметрах successUrl / failUrl открываются в iframe.
+		# Если отсутствует, то считается выключенным.»
+		# Optional, string.
 		,'target' => ''
-		// 2017-09-04
-		// «Invoice ID generated by the merchant,
-		// corresponds to `bill_id` parameter used to create the bill.»
-		// «Идентификатор счета в информационной системе провайдера.
-		// Соответствует параметру `bill_id` из запроса на выставление счета.».
-		// Required, string.
+		# 2017-09-04
+		# «Invoice ID generated by the merchant,
+		# corresponds to `bill_id` parameter used to create the bill.»
+		# «Идентификатор счета в информационной системе провайдера.
+		# Соответствует параметру `bill_id` из запроса на выставление счета.».
+		# Required, string.
 		,'transaction' => $this->id()
 	];}
 

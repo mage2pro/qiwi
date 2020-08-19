@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Qiwi\W;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
-// 2017-09-14 [QIWI Wallet] An example of a webhook notification: https://mage2.pro/t/4487
+# 2017-09-14 [QIWI Wallet] An example of a webhook notification: https://mage2.pro/t/4487
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-09-14 The payment's identifier in the PSP.

@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Qiwi\API;
 use Dfe\Qiwi\Settings as S;
-// 2017-09-03
+# 2017-09-03
 final class Client extends \Df\API\Client {
 	/**
 	 * 2017-09-03

@@ -3,7 +3,7 @@ namespace Dfe\Qiwi\API;
 use Df\API\Operation as O;
 use Df\Core\Exception as DFE;
 use Zend_Http_Client as Z;
-// 2017-09-03
+# 2017-09-03
 /** @method static Bill s() */
 final class Bill extends \Df\API\Facade {
 	/**
