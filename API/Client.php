@@ -26,7 +26,7 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::_p()
 	 * @return array(string => string)
 	 */
-	protected function headers() {/** @var S $s */$s = $this->s(); return [
+	protected function headers():array {/** @var S $s */$s = $this->s(); return [
 		/**
 		 * 2017-09-03
 		 * «Authentication data are transmitted using the standard rules of basic-authorization for HTTP-requests.
@@ -64,9 +64,8 @@ final class Client extends \Df\API\Client {
 	 * @override
 	 * @see \Df\API\Client::responseValidatorC()
 	 * @used-by \Df\API\Client::_p()
-	 * @return string
 	 */
-	protected function responseValidatorC() {return \Dfe\Qiwi\API\Validator::class;}
+	protected function responseValidatorC():string {return \Dfe\Qiwi\API\Validator::class;}
 
 	/**
 	 * 2017-09-03
@@ -75,7 +74,7 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::__construct()
 	 * @used-by \Df\API\Client::url()
 	 */
-	protected function urlBase(): string {return "https://api.qiwi.com/api/v2/prv/{$this->s()->merchantID()}";}
+	protected function urlBase():string {return "https://api.qiwi.com/api/v2/prv/{$this->s()->merchantID()}";}
 
 	/**
 	 * 2017-09-03

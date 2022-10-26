@@ -13,18 +13,16 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @see \Df\API\Exception::long()
 	 * @used-by \Df\API\Client::_p()
 	 * @used-by \Df\API\Exception::short()
-	 * @return string
 	 */
-	function long() {return dfa($this->codes(), $this->code());}
+	function long():string {return dfa($this->codes(), $this->code());}
 
 	/**
 	 * 2017-09-03
 	 * @override
 	 * @see \Df\API\Response\Validator::valid()
 	 * @used-by \Df\API\Client::_p()
-	 * @return bool
 	 */
-	function valid() {return !$this->code();}
+	function valid():bool {return !$this->code();}
 
 	/**
 	 * 2017-09-03 `[QIWI Wallet] API error codes`: https://mage2.pro/t/4448
