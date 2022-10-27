@@ -53,8 +53,8 @@ final class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-09-05
-	 * @used-by iiaKeys()
-	 * @used-by phone()
+	 * @used-by self::iiaKeys()
+	 * @used-by self::phone()
 	 */
 	private static $II_PHONE = 'phone';
 }

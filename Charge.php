@@ -12,7 +12,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * 2017-09-04 Our local (without the module prefix) internal payment ID.
 	 * @override
 	 * @see \Df\Payment\Operation::id()
-	 * @used-by pRedirect()
+	 * @used-by self::pRedirect()
 	 * @used-by \Dfe\Qiwi\Init\Action::preorder()
 	 * @used-by \Dfe\Qiwi\Init\Action::transId()
 	 * @return string

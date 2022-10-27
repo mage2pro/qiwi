@@ -76,7 +76,7 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * 2017-09-13
 	 * @override
 	 * @see \Df\Payment\W\Responder::success()
-	 * @used-by notForUs()
+	 * @used-by self::notForUs()
 	 * @used-by \Df\Payment\W\Responder::get()
 	 * @return Result
 	 */

@@ -26,15 +26,15 @@ final class Validator extends \Df\API\Response\Validator {
 
 	/**
 	 * 2017-09-03 `[QIWI Wallet] API error codes`: https://mage2.pro/t/4448
-	 * @used-by long()
-	 * @used-by valid()
+	 * @used-by self::long()
+	 * @used-by self::valid()
 	 * @return int
 	 */
 	private function code() {return dfc($this, function() {return intval(dfa($this->r(), 'result_code'));});}
 
 	/**
 	 * 2017-09-03
-	 * @used-by long()
+	 * @used-by self::long()
 	 * @return array(int => string)
 	 */
 	private function codes() {return dfc($this, function() {return dfa_key_int(df_module_csv2($this,

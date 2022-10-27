@@ -34,8 +34,8 @@ class Result extends \Df\Framework\W\Result\Xml {
 
 	/**
 	 * 2017-09-13
-	 * @used-by contents()
-	 * @used-by i()
+	 * @used-by self::contents()
+	 * @used-by self::i()
 	 * @var int
 	 */
 	private $_code;

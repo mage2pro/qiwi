@@ -123,13 +123,13 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-14 «Invoice expired. Invoice has not been paid.» / «Время жизни счета истекло. Счет не оплачен.»
-	 * @used-by isSuccessful()
+	 * @used-by self::isSuccessful()
 	 * @var string
 	 */
 	private static $S_EXPIRED = 'expired';
 	/**
 	 * 2017-09-14 «Payment refund is unsuccessful» / «Платеж неуспешен».
-	 * @used-by isSuccessful()
+	 * @used-by self::isSuccessful()
 	 * @var string
 	 */
 	private static $S_FAIL = 'fail';
@@ -145,14 +145,14 @@ final class Event extends \Df\PaypalClone\W\Event {
 	private static $S_PROCESSING = 'processing';
 	/**
 	 * 2017-09-14 «Invoice has been rejected» / «Счет отклонен».
-	 * @used-by isSuccessful()
+	 * @used-by self::isSuccessful()
 	 * @var string
 	 */
 	private static $S_REJECTED = 'rejected';
 	/**
 	 * 2017-09-14
 	 * «Payment processing error. Invoice has not been paid.»/ «Ошибка при проведении оплаты. Счет не оплачен.»
-	 * @used-by isSuccessful()
+	 * @used-by self::isSuccessful()
 	 * @var string
 	 */
 	private static $S_UNPAID = 'unpaid';

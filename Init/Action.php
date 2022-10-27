@@ -76,16 +76,16 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::transId()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @used-by action()
+	 * @used-by self::action()
 	 * @return string|null
 	 */
 	protected function transId() {return $this->e2i($this->charge()->id());}
 
 	/**
 	 * 2017-09-04
-	 * @used-by preorder()
-	 * @used-by redirectParams()
-	 * @used-by transId()
+	 * @used-by self::preorder()
+	 * @used-by self::redirectParams()
+	 * @used-by self::transId()
 	 * @return Charge
 	 */
 	private function charge() {return dfc($this, function() {return new Charge($this->m());});}
