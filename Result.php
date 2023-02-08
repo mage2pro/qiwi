@@ -10,7 +10,7 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @used-by \Df\Framework\W\Result\Xml::__toString()
 	 * @return array(string => mixed)
 	 */
-	protected function contents() {return ['result_code' => $this->_code];}
+	protected function contents():array {return ['result_code' => $this->_code];}
 
 	/**
 	 * 2017-09-13, 2021-12-03
