@@ -28,9 +28,8 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @override
 	 * @see \Df\Framework\W\Result\Xml::tag()
 	 * @used-by \Df\Framework\W\Result\Xml::__toString()
-	 * @return string
 	 */
-	final protected function tag() {return 'result';}
+	final protected function tag():string {return 'result';}
 
 	/**
 	 * 2017-09-13

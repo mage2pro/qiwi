@@ -12,9 +12,8 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::forceGet()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string
 	 */
-	protected function forceGet() {return true;}
+	protected function forceGet():bool {return true;}
 
 	/**
 	 * 2017-09-10
@@ -23,7 +22,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @return array(string => mixed)
 	 */
-	protected function redirectParams() {return $this->charge()->pRedirect();}
+	protected function redirectParams():array {return $this->charge()->pRedirect();}
 
 	/**
 	 * 2017-09-02
@@ -41,9 +40,8 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string
 	 */
-	protected function redirectUrl() {return 'https://bill.qiwi.com/order/external/main.action';}
+	protected function redirectUrl():string {return 'https://bill.qiwi.com/order/external/main.action';}
 
 	/**
 	 * 2017-09-10
@@ -58,7 +56,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @see \Df\Payment\Init\Action::preorder()
 	 * @used-by \Df\Payment\Init\Action::action()
 	 */
-	protected function preorder() {
+	protected function preorder():void {
 		$c = $this->charge(); /** @var Charge $c */
 		/** @var M $m */ /** @var array(string => mixed) $req */
 		df_sentry_extra($m = $this->m(), 'Request Params', $req = $c->pBill());
@@ -77,9 +75,8 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @see \Df\Payment\Init\Action::transId()
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @used-by self::action()
-	 * @return string|null
 	 */
-	protected function transId() {return $this->e2i($this->charge()->id());}
+	protected function transId():string {return $this->e2i($this->charge()->id());}
 
 	/**
 	 * 2017-09-04

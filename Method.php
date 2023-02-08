@@ -19,10 +19,8 @@ final class Method extends \Df\Payment\Method {
 	 * @override
 	 * @see \Df\Payment\Method::amountFormat()
 	 * @used-by \Df\Payment\Operation::amountFormat()
-	 * @param float|int $a
-	 * @return string
 	 */
-	function amountFormat($a) {return dff_2($a);}
+	function amountFormat(float $a):string {return dff_2($a);}
 
 	/**
 	 * 2017-09-05
@@ -49,7 +47,7 @@ final class Method extends \Df\Payment\Method {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	protected function iiaKeys() {return [self::$II_PHONE];}
+	protected function iiaKeys():array {return [self::$II_PHONE];}
 
 	/**
 	 * 2017-09-05

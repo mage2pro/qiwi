@@ -58,19 +58,16 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::error()
 	 * @used-by \Df\Payment\W\Responder::setError()
 	 * @param \Exception|string $e
-	 * @return Result
 	 */
-	protected function error($e) {return Result::i(1)->setHttpResponseCode(500);}
+	protected function error($e):Result {return Result::i(1)->setHttpResponseCode(500);}
 
 	/**
 	 * 2017-09-12
 	 * @override
 	 * @see \Df\Payment\W\Responder::notForUs()
 	 * @used-by \Df\Payment\W\Responder::setNotForUs()
-	 * @param string|null $message [optional]
-	 * @return Result
 	 */
-	protected function notForUs($message = null) {return $this->success();}
+	protected function notForUs(string $m):Result {return $this->success();}
 
 	/**
 	 * 2017-09-13
@@ -78,7 +75,6 @@ final class Responder extends \Df\Payment\W\Responder {
 	 * @see \Df\Payment\W\Responder::success()
 	 * @used-by self::notForUs()
 	 * @used-by \Df\Payment\W\Responder::get()
-	 * @return Result
 	 */
-	protected function success() {return Result::i(0);}
+	protected function success():Result {return Result::i(0);}
 }

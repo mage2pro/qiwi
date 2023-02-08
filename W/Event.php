@@ -8,9 +8,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::idE()
 	 * @used-by \Df\PaypalClone\W\Nav::id()
-	 * @return string
 	 */
-	function idE() {return $this->pid();}
+	function idE():string {return $this->pid();}
 
 	/**
 	 * 2017-09-14
@@ -21,9 +20,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::isSuccessful()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return bool
 	 */
-	function isSuccessful() {return !in_array($this->status(), [
+	function isSuccessful():bool {return !in_array($this->status(), [
 		self::$S_EXPIRED, self::$S_FAIL, self::$S_REJECTED, self::$S_UNPAID
 	]);}
 
@@ -42,9 +40,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\StripeClone\W\Event::idBase()
 	 * @used-by \Dfe\Qiwi\W\Handler::amount()
 	 * @used-by \Dfe\Robokassa\W\Responder::success()
-	 * @return string
 	 */
-	function pid() {return df_trim_text_left(parent::pid(), '_TEST_');}
+	function pid():string {return df_trim_text_left(parent::pid(), '_TEST_');}
 
 	/**
 	 * 2017-09-14 The type of the current transaction.
@@ -58,7 +55,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\PaypalClone\W\Nav::id()
 	 * @used-by \Dfe\Qiwi\W\Handler::strategyC()
 	 */
-	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+	function ttCurrent():string {return !$this->isSuccessful() ? parent::ttCurrent() : dfa_strict([
 		self::$S_PROCESSING => self::T_INFO
 		,self::S_SUCCESS => self::T_REFUND
 		,self::$S_WAITING => self::T_INFO
@@ -66,22 +63,19 @@ final class Event extends \Df\PaypalClone\W\Event {
 	], $this->status());}
 
 	/**
-	 * 2017-09-14
-	 * It is never used. @see idE()
+	 * 2017-09-14 It is unused. @see idE()
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
-	 * @return string
 	 */
-	protected function k_idE() {df_should_not_be_here(); return '';}
+	protected function k_idE():string {df_should_not_be_here(); return '';}
 
 	/**
 	 * 2017-09-14
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
 	 * @used-by \Df\Payment\W\Event::pid()
-	 * @return string
 	 */
-	protected function k_pid() {return 'bill_id';}
+	protected function k_pid():string {return 'bill_id';}
 
 	/**
 	 * 2017-09-14
@@ -98,9 +92,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
-	 * @return string
 	 */
-	protected function k_signature() {return Reader::K__SIGNATURE;}
+	protected function k_signature():string {return Reader::K__SIGNATURE;}
 
 	/**
 	 * 2017-09-14
@@ -111,9 +104,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
-	 * @return string
 	 */
-	protected function k_status() {return 'status';}
+	protected function k_status():string {return 'status';}
 
 	/**
 	 * 2017-09-14 «Payment refund is successful» / «Платеж проведен».

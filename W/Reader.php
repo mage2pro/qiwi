@@ -18,7 +18,7 @@ final class Reader extends \Df\Payment\W\Reader {
 	 * @used-by \Df\Payment\W\Reader::__construct()
 	 * @return array(string => mixed)
 	 */
-	protected function http() {return parent::http() + [self::K__SIGNATURE => df_request_header(self::K__SIGNATURE)];}
+	protected function http():array {return parent::http() + [self::K__SIGNATURE => df_request_header(self::K__SIGNATURE)];}
 
 	/**
 	 * 2017-09-14

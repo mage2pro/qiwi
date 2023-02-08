@@ -10,9 +10,8 @@ final class Handler extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefu
 	 * @override
 	 * @see \Df\Payment\W\IRefund::amount()
 	 * @used-by \Df\Payment\W\Strategy\Refund::_handle()
-	 * @return int
 	 */
-	function amount() {return $this->e()->r('amount');}
+	function amount():int {return $this->r('amount');}
 
 	/**
 	 * 2017-09-14
@@ -24,9 +23,8 @@ final class Handler extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefu
 	 * @override
 	 * @see \Df\Payment\W\IRefund::eTransId()
 	 * @used-by \Df\Payment\W\Strategy\Refund::_handle()
-	 * @return string
 	 */
-	function eTransId() {return $this->e()->pid();}
+	function eTransId():string {return $this->e()->pid();}
 
 	/**
 	 * 2017-09-14
@@ -37,9 +35,8 @@ final class Handler extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefu
 	 * @override
 	 * @see \Df\Payment\W\Handler::strategyC()
 	 * @used-by \Df\Payment\W\Handler::handle()
-	 * @return string|null
 	 */
-	protected function strategyC() {return
+	protected function strategyC():string {return
 		Event::T_REFUND === $this->e()->ttCurrent() ? Refund::class : ConfirmPending::class
 	;}
 }

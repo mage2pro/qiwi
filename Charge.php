@@ -15,9 +15,8 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pRedirect()
 	 * @used-by \Dfe\Qiwi\Init\Action::preorder()
 	 * @used-by \Dfe\Qiwi\Init\Action::transId()
-	 * @return string
 	 */
-	function id() {return dfc($this, function() {return Identification::get($this->o());});}
+	function id():string {return dfc($this, function() {return Identification::get($this->o());});}
 
 	/**
 	 * 2017-09-04
