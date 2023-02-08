@@ -36,7 +36,7 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @used-by self::long()
 	 * @return array(int => string)
 	 */
-	private function codes() {return dfc($this, function() {return dfa_key_int(df_module_csv2($this,
+	private function codes():array {return dfc($this, function() {return dfa_key_int(df_module_csv2($this,
 		'error-codes/' . df_lang_ru_en()
 	));});}
 }
