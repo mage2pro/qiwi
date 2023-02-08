@@ -13,9 +13,8 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-02 «API password».
 	 * @used-by \Dfe\Qiwi\API\Client::headers()
-	 * @return string
 	 */
-	function password1() {return $this->p();}
+	function password1():string {return $this->p();}
 
 	/**
 	 * 2017-09-02 «Webhook password».
