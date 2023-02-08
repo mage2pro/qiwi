@@ -14,10 +14,8 @@ final class Bill extends \Df\API\Facade {
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_en.html.md#refunds
 	 * https://github.com/QIWI-API/pull-payments-docs/blob/40d48cf0/_pull-payments-api_ru.html.md#Возврат-оплаченного-счета-refund
 	 * https://developer.qiwi.com/ru/pull-payments/index.html#refund
-	 * @param string $id
-	 * @param string $refundId
 	 * @return O
 	 * @throws DFE
 	 */
-	function refund($id, $refundId) {return $this->p($id, Z::PUT, "refund/$refundId");}
+	function refund(string $id, string $refundId) {return $this->p($id, Z::PUT, "refund/$refundId");}
 }
