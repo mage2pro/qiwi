@@ -42,8 +42,6 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * 2017-09-13
 	 * @used-by \Dfe\Qiwi\W\Responder::error()
 	 * @used-by \Dfe\Qiwi\W\Responder::success()
-	 * @param int $code
-	 * @return self
 	 */
 	final static function i(int $code):self {/** @var self $i */ $i = new self; $i->_code = $code; return $i;}
 }
