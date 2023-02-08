@@ -45,5 +45,5 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @param int $code
 	 * @return self
 	 */
-	final static function i($code) {/** @var self $i */ $i = new self; $i->_code = $code; return $i;}
+	final static function i(int $code) {/** @var self $i */ $i = new self; $i->_code = $code; return $i;}
 }
