@@ -80,7 +80,6 @@ final class Client extends \Df\API\Client {
 	 * 2017-09-03
 	 * @used-by self::headers()
 	 * @used-by self::urlBase()
-	 * @return S
 	 */
-	private function s() {return dfps($this);}
+	private function s():S {return dfps($this);}
 }
