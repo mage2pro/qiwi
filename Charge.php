@@ -31,7 +31,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by \Dfe\Qiwi\Init\Action::preorder()
 	 * @return array(string, array(string => mixed))
 	 */
-	function pBill() {return [
+	function pBill():array {return [
 		/**
 		 * 2017-09-04  
 		 * 1) The GitHub-based documentation:
