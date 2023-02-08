@@ -19,9 +19,8 @@ class Result extends \Df\Framework\W\Result\Xml {
 	 * @override
 	 * @see \Df\Framework\W\Result\Xml::contentType()
 	 * @used-by \Df\Framework\W\Result\Xml::render()
-	 * @return string
 	 */
-	protected function contentType() {return 'text/xml';}
+	protected function contentType():string {return 'text/xml';}
 
 	/**
 	 * 2021-12-03
