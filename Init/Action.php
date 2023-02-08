@@ -83,7 +83,6 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by self::preorder()
 	 * @used-by self::redirectParams()
 	 * @used-by self::transId()
-	 * @return Charge
 	 */
-	private function charge() {return dfc($this, function() {return new Charge($this->m());});}
+	private function charge():Charge {return dfc($this, function() {return new Charge($this->m());});}
 }
