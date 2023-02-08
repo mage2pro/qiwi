@@ -25,7 +25,6 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-05
 	 * @used-by \Dfe\Qiwi\Charge::lifetime()
-	 * @return int
 	 */
-	function waitPeriod() {return WaitPeriodType::calculate($this);}
+	function waitPeriod():int {return WaitPeriodType::calculate($this);}
 }
