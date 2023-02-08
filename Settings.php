@@ -19,9 +19,8 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-09-02 «Webhook password».
 	 * @used-by \Dfe\Qiwi\Signer::sign()
-	 * @return string
 	 */
-	function password2() {return $this->p();}
+	function password2():string {return $this->p();}
 
 	/**
 	 * 2017-09-05
