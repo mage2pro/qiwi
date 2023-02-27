@@ -43,6 +43,6 @@
 				</argument>
 			</arguments>
 		</referenceBlock>
-		<referenceContainer name='root'><block class='Df\Phone\Js'/></referenceContainer>
+		<referenceContainer name='root'><block class='Dfe\Phone\Js'/></referenceContainer>
 	</body>
 </page>
