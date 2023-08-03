@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/qiwi"
-	,"version": "1.2.1"
+	,"version": "1.2.2"
 	,"description": "Visa QIWI Wallet (QIWI Кошелёк) integration with Magento 2"
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/qiwi"
@@ -11,7 +11,7 @@
 		"homepage": "https://upwork.com/fl/mage2pro",
 		"role": "Developer"
 	}]
-	,"require": {"mage2pro/core": ">=8.0.0", "mage2pro/phone": ">=1.2.1"}
+	,"require": {"mage2pro/core": ">=10.2.1", "mage2pro/phone": ">=1.2.1"}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\Qiwi\\": ""}}
 	,"keywords": [
 		"API"
