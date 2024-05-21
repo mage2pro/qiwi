@@ -10,7 +10,7 @@ final class Validator extends \Df\API\Response\Validator {
 	/**
 	 * 2017-09-03
 	 * @override
-	 * @see \Df\API\Exception::long()
+	 * @see \Df\API\Response\Validator::long()
 	 * @used-by \Df\API\Client::_p()
 	 * @used-by \Df\API\Exception::short()
 	 * @used-by \Df\API\Exception::message()
