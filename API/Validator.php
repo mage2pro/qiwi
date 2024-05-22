@@ -13,7 +13,6 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @see \Df\API\Response\Validator::long()
 	 * @used-by \Df\API\Client::_p()
 	 * @used-by \Df\API\Exception::short()
-	 * @used-by \Df\API\Exception::message()
 	 */
 	function long():string {return dfa($this->codes(), $this->code());}
 
